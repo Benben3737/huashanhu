@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="示例笔记按领域和子技能分组，链到对应的公开示例课文。">
+  <title>笔记 · 化山湖</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#content">跳到主要内容</a>
+  <div class="ink-field" aria-hidden="true">
+    <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="mistA" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8ecfc8" stop-opacity="0.18"/>
+          <stop offset="72%" stop-color="#8ecfc8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse class="mist mist-a" cx="180" cy="140" rx="320" ry="140" fill="url(#mistA)"/>
+      <ellipse class="mist mist-b" cx="1220" cy="220" rx="360" ry="150" fill="url(#mistA)"/>
+    </svg>
+  </div>
+  <div data-inert-root>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
+        <img src="assets/img/mark.svg" alt="" width="42" height="42">
+        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="catalog.html">学习目录</a><a href="notes.html" aria-current="page">笔记</a><a href="portfolio.html">作品</a><a href="about.html">关于</a><a href="faq.html">问答</a></nav>
+      <div class="header-actions">
+        <button class="text-btn student-toggle" type="button" data-student-toggle><span data-student-label>体验学生视图</span></button>
+      </div>
+    </header>
+    <p class="proto-banner">课程和笔记是公开示例。学生视图只是界面演示，不收集账号。</p>
+    <p id="student-banner" class="student-banner" hidden>你正在查看公开示例的学生视图。没有报名、作业、消息或私密资料。<button class="text-btn" type="button" data-open-demo>查看说明</button><button class="text-btn" type="button" data-student-exit>退出学生视图</button></p>
+    <main id="content" class="shell">
+      <header class="page-head">
+      <p class="kicker">示例笔记</p>
+      <h1>学习笔记</h1>
+      <p class="lede">每条都是公开占位，不是课堂摘录。游泳目前没有笔记，因为它的章节还没写。</p>
+    </header>
+    <div data-hierarchy>
+      <form class="filters" data-filter-form action="notes.html" method="get" role="search">
+    <div class="search-row">
+      <label>搜索示例笔记
+        <input data-q id="q" name="q" type="search" placeholder="试试：游泳、钩手、备菜">
+      </label>
+    </div>
+    <div class="chip-row" role="group" aria-label="领域"><button class="chip" type="button" data-set-domain="" aria-pressed="true">全部领域</button><button class="chip" type="button" data-set-domain="music" aria-pressed="false">音乐</button><button class="chip" type="button" data-set-domain="fitness" aria-pressed="false">运动健身</button><button class="chip" type="button" data-set-domain="travel" aria-pressed="false">旅游</button><button class="chip" type="button" data-set-domain="cooking" aria-pressed="false">烹饪</button></div>
+    <div class="chip-row" role="group" aria-label="子技能" data-sub-row hidden><button class="chip" type="button" hidden data-set-sub="listening" data-domain="music" aria-pressed="false">节奏与聆听</button><button class="chip" type="button" hidden data-set-sub="archery" data-domain="fitness" aria-pressed="false">射箭</button><button class="chip" type="button" hidden data-set-sub="swim" data-domain="fitness" aria-pressed="false">游泳</button><button class="chip" type="button" hidden data-set-sub="hike" data-domain="fitness" aria-pressed="false">爬山/徒步</button><button class="chip" type="button" hidden data-set-sub="mantis" data-domain="fitness" aria-pressed="false">螳螂拳</button><button class="chip" type="button" hidden data-set-sub="walk" data-domain="travel" aria-pressed="false">城市步行</button><button class="chip" type="button" hidden data-set-sub="homecook" data-domain="cooking" aria-pressed="false">家常备菜</button></div>
+    <p data-count aria-live="polite">正在按领域分组显示示例笔记</p>
+  </form>
+  <p class="empty-note" data-empty hidden>没有匹配的示例笔记。</p>
+  <noscript><p class="empty-note">不运行脚本时，目录会完整展开。筛选和浏览器后退还原筛选，需要脚本。</p></noscript>
+      <section class="domain-block" data-domain-block data-domain="music">
+        <p class="kicker">领域</p>
+        <h2>音乐</h2>
+        <section class="subskill" data-group data-domain="music" data-sub="listening">
+            <p class="kicker">子技能</p>
+            <h3>节奏与聆听</h3>
+            <div class="card-grid"><article class="course-card" data-entry data-domain="music" data-sub="listening" data-search="音乐 节奏与聆听 四拍听记页样例 一小节格子如何被画出来 用四个空格子说明节奏图在页面上的位置。 示例笔记">
+                <p class="badge">示例笔记</p>
+                <h3><a href="lesson-rhythm-01.html">一小节格子如何被画出来</a></h3>
+                <p>用四个空格子说明节奏图在页面上的位置。</p>
+                <p class="meta">音乐 / 节奏与聆听 / 四拍听记页样例</p>
+              </article></div>
+          </section>
+      </section><section class="domain-block" data-domain-block data-domain="fitness">
+        <p class="kicker">领域</p>
+        <h2>运动健身</h2>
+        <section class="subskill" data-group data-domain="fitness" data-sub="archery">
+            <p class="kicker">子技能</p>
+            <h3>射箭</h3>
+            <div class="card-grid"><article class="course-card" data-entry data-domain="fitness" data-sub="archery" data-search="运动健身 射箭 射箭页样例 靶纸在课文里放哪里 同心圆只说明配图区域，不表示射程或环数标准。 示例笔记">
+                <p class="badge">示例笔记</p>
+                <h3><a href="lesson-archery-01.html">靶纸在课文里放哪里</a></h3>
+                <p>同心圆只说明配图区域，不表示射程或环数标准。</p>
+                <p class="meta">运动健身 / 射箭 / 射箭页样例</p>
+              </article></div>
+          </section><section class="subskill" data-group data-domain="fitness" data-sub="hike">
+            <p class="kicker">子技能</p>
+            <h3>爬山/徒步</h3>
+            <div class="card-grid"><article class="course-card" data-entry data-domain="fitness" data-sub="hike" data-search="运动健身 爬山/徒步 行前检查页样例 检查表的空栏 只保留栏位名称，不填写真实行程。 示例笔记">
+                <p class="badge">示例笔记</p>
+                <h3><a href="lesson-hike-01.html">检查表的空栏</a></h3>
+                <p>只保留栏位名称，不填写真实行程。</p>
+                <p class="meta">运动健身 / 爬山/徒步 / 行前检查页样例</p>
+              </article></div>
+          </section><section class="subskill" data-group data-domain="fitness" data-sub="mantis">
+            <p class="kicker">子技能</p>
+            <h3>螳螂拳</h3>
+            <div class="card-grid"><article class="course-card" data-entry data-domain="fitness" data-sub="mantis" data-search="运动健身 螳螂拳 螳螂拳入门 一个名称在页面上的位置 用「钩手」这个名称演示标题、说明和几何示意图。 示例笔记">
+                <p class="badge">示例笔记</p>
+                <h3><a href="lesson-tanglang-01.html">一个名称在页面上的位置</a></h3>
+                <p>用「钩手」这个名称演示标题、说明和几何示意图。</p>
+                <p class="meta">运动健身 / 螳螂拳 / 螳螂拳入门</p>
+              </article><article class="course-card" data-entry data-domain="fitness" data-sub="mantis" data-search="运动健身 螳螂拳 螳螂拳入门 笔记、短视频和网盘各放哪里 外链槽明确写成尚未配置，学生视图也不能把它们变成可访问地址。 示例笔记">
+                <p class="badge">示例笔记</p>
+                <h3><a href="lesson-tanglang-02.html">笔记、短视频和网盘各放哪里</a></h3>
+                <p>外链槽明确写成尚未配置，学生视图也不能把它们变成可访问地址。</p>
+                <p class="meta">运动健身 / 螳螂拳 / 螳螂拳入门</p>
+              </article></div>
+          </section>
+      </section><section class="domain-block" data-domain-block data-domain="travel">
+        <p class="kicker">领域</p>
+        <h2>旅游</h2>
+        <section class="subskill" data-group data-domain="travel" data-sub="walk">
+            <p class="kicker">子技能</p>
+            <h3>城市步行</h3>
+            <div class="card-grid"><article class="course-card" data-entry data-domain="travel" data-sub="walk" data-search="旅游 城市步行 半日步行页样例 行程页还没有地名 起点、停留和返回都标记为待补充。 示例笔记">
+                <p class="badge">示例笔记</p>
+                <h3><a href="lesson-walk-01.html">行程页还没有地名</a></h3>
+                <p>起点、停留和返回都标记为待补充。</p>
+                <p class="meta">旅游 / 城市步行 / 半日步行页样例</p>
+              </article></div>
+          </section>
+      </section><section class="domain-block" data-domain-block data-domain="cooking">
+        <p class="kicker">领域</p>
+        <h2>烹饪</h2>
+        <section class="subskill" data-group data-domain="cooking" data-sub="homecook">
+            <p class="kicker">子技能</p>
+            <h3>家常备菜</h3>
+            <div class="card-grid"><article class="course-card" data-entry data-domain="cooking" data-sub="homecook" data-search="烹饪 家常备菜 备菜顺序页样例 顺序栏，不是配方 用来展示烹饪课文的结构，不能照着做出一道菜。 示例笔记">
+                <p class="badge">示例笔记</p>
+                <h3><a href="lesson-cook-01.html">顺序栏，不是配方</a></h3>
+                <p>用来展示烹饪课文的结构，不能照着做出一道菜。</p>
+                <p class="meta">烹饪 / 家常备菜 / 备菜顺序页样例</p>
+              </article></div>
+          </section>
+      </section>
+    </div>
+    </main>
+    <footer class="site-footer">
+      <p>化山湖 · 技能学习空间。页面尚未对外发布。</p>
+    </footer>
+  </div>
+  <div id="demo-modal" class="modal" hidden>
+    <div class="modal-dialog" role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="demo-title" aria-describedby="demo-desc">
+      <div class="modal-head">
+        <h2 id="demo-title">界面演示，不是登录</h2>
+        <button class="icon-btn" type="button" data-close-demo aria-label="关闭演示说明">关闭</button>
+      </div>
+      <p id="demo-desc">这里不会要求密码，也不会发送验证码。体验学生视图只在这个浏览器标签里多显示一行公开提示，所有人看到的课文仍然相同。</p>
+      <div class="disabled-form">
+        <label>邮箱（已停用，不收集）
+          <input class="fake-field" type="text" disabled placeholder="不收集邮箱" value="">
+        </label>
+        <p>没有密码栏。请不要把真实密码输入到页面的任何位置。</p>
+      </div>
+      <div class="actions">
+        <button class="primary-btn" type="button" data-student-enter>体验学生视图</button>
+        <button class="ghost-btn" type="button" data-close-demo>返回</button>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/links.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

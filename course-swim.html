@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="示例课程：换气页样例。这门示例课还没有章节。空列表用来演示「尚未编写」，不是已招生的班级。">
+  <title>换气页样例 · 化山湖</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#content">跳到主要内容</a>
+  <div class="ink-field" aria-hidden="true">
+    <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="mistA" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8ecfc8" stop-opacity="0.18"/>
+          <stop offset="72%" stop-color="#8ecfc8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse class="mist mist-a" cx="180" cy="140" rx="320" ry="140" fill="url(#mistA)"/>
+      <ellipse class="mist mist-b" cx="1220" cy="220" rx="360" ry="150" fill="url(#mistA)"/>
+    </svg>
+  </div>
+  <div data-inert-root>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
+        <img src="assets/img/mark.svg" alt="" width="42" height="42">
+        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="catalog.html" aria-current="page">学习目录</a><a href="notes.html">笔记</a><a href="portfolio.html">作品</a><a href="about.html">关于</a><a href="faq.html">问答</a></nav>
+      <div class="header-actions">
+        <button class="text-btn student-toggle" type="button" data-student-toggle><span data-student-label>体验学生视图</span></button>
+      </div>
+    </header>
+    <p class="proto-banner">课程和笔记是公开示例。学生视图只是界面演示，不收集账号。</p>
+    <p id="student-banner" class="student-banner" hidden>你正在查看公开示例的学生视图。没有报名、作业、消息或私密资料。<button class="text-btn" type="button" data-open-demo>查看说明</button><button class="text-btn" type="button" data-student-exit>退出学生视图</button></p>
+    <main id="content" class="shell">
+      <nav class="crumbs" aria-label="当前位置"><a href="catalog.html">学习目录</a><span aria-hidden="true">/</span><a href="catalog.html?domain=fitness#domain-fitness">运动健身</a><span aria-hidden="true">/</span><a href="catalog.html?domain=fitness&amp;sub=swim#sub-swim">游泳</a><span aria-hidden="true">/</span><span aria-current="page">换气页样例</span></nav>
+    <header class="page-head">
+      <p class="badge">示例课程</p>
+      <h1>换气页样例</h1>
+      <p class="lede">这门示例课还没有章节。空列表用来演示「尚未编写」，不是已招生的班级。</p>
+      <p class="meta">运动健身 / 游泳 · 没有报名人数，没有学员评价。</p>
+    </header>
+    <h2>章节</h2>
+    <p class="empty-note">章节待编写。这不是已开课的空班，只是目录上的占位。</p>
+    <div class="slot-grid">
+      <section class="slot" data-slot="video" data-slot-id="swim">
+    <p class="badge">外部链接</p>
+    <h3>短视频</h3>
+    <p class="slot-status">链接尚未配置</p>
+    <p>若以后填入视频网站地址，能否播放仍由该网站决定。本站演示不代替它的登录或权限。 地址只写在 <code>assets/js/links.js</code>，当前为空。</p>
+    <a class="slot-link" hidden>打开已配置的外部链接</a>
+  </section>
+      <section class="slot" data-slot="drive" data-slot-id="swim">
+    <p class="badge">外部链接</p>
+    <h3>网盘资料</h3>
+    <p class="slot-status">链接尚未配置</p>
+    <p>若以后填入网盘地址，能否下载由网盘服务商的分享设置决定。体验学生视图不会授予网盘访问权。 地址只写在 <code>assets/js/links.js</code>，当前为空。</p>
+    <a class="slot-link" hidden>打开已配置的外部链接</a>
+  </section>
+    </div>
+    </main>
+    <footer class="site-footer">
+      <p>化山湖 · 技能学习空间。页面尚未对外发布。</p>
+    </footer>
+  </div>
+  <div id="demo-modal" class="modal" hidden>
+    <div class="modal-dialog" role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="demo-title" aria-describedby="demo-desc">
+      <div class="modal-head">
+        <h2 id="demo-title">界面演示，不是登录</h2>
+        <button class="icon-btn" type="button" data-close-demo aria-label="关闭演示说明">关闭</button>
+      </div>
+      <p id="demo-desc">这里不会要求密码，也不会发送验证码。体验学生视图只在这个浏览器标签里多显示一行公开提示，所有人看到的课文仍然相同。</p>
+      <div class="disabled-form">
+        <label>邮箱（已停用，不收集）
+          <input class="fake-field" type="text" disabled placeholder="不收集邮箱" value="">
+        </label>
+        <p>没有密码栏。请不要把真实密码输入到页面的任何位置。</p>
+      </div>
+      <div class="actions">
+        <button class="primary-btn" type="button" data-student-enter>体验学生视图</button>
+        <button class="ghost-btn" type="button" data-close-demo>返回</button>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/links.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
