@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="试用期邮箱邀请登录入口。验证服务尚未接通。">
+  <title>邀请登录 · 化山湖</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#content">跳到主要内容</a>
+  <div class="ink-field" aria-hidden="true">
+    <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="mistA" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8ecfc8" stop-opacity="0.18"/>
+          <stop offset="72%" stop-color="#8ecfc8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse class="mist mist-a" cx="180" cy="140" rx="320" ry="140" fill="url(#mistA)"/>
+      <ellipse class="mist mist-b" cx="1220" cy="220" rx="360" ry="150" fill="url(#mistA)"/>
+    </svg>
+  </div>
+  <div data-inert-root>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
+        <img src="assets/img/mark.svg" alt="" width="42" height="42">
+        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="about.html">关于</a><a href="points.html">积分</a></nav>
+      <div class="header-actions">
+        <a class="text-btn" href="invite.html" aria-current="page">邀请登录</a>
+      </div>
+    </header>
+    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <main id="content" class="shell">
+      <header class="page-head">
+        <p class="kicker">邀请</p>
+        <h1>邀请登录</h1>
+        <p class="lede">试用期打算用邮箱邀请进入。现在没有开放注册，也还不能发送或核验邀请。</p>
+      </header>
+      <div class="info-grid" data-invite>
+        <form class="composer quiet-card">
+          <h2>邮箱与验证码</h2>
+          <label>邀请邮箱
+            <input name="email" type="email" autocomplete="off" inputmode="email" placeholder="只在验证服务接通后才会使用">
+          </label>
+          <label>验证码
+            <input name="code" type="text" autocomplete="off" inputmode="numeric" placeholder="服务接通前不会核验">
+          </label>
+          <button class="primary-btn" type="submit">继续</button>
+        </form>
+        <form class="composer quiet-card">
+          <h2>邀请链接</h2>
+          <label>链接
+            <input name="link" type="url" autocomplete="off" placeholder="服务接通前不会打开会话">
+          </label>
+          <button class="primary-btn" type="submit">使用邀请链接</button>
+        </form>
+      </div>
+      <p data-invite-status class="status-line" role="status" aria-live="polite">还没有提交。提交后也不会显示已发送或登录成功。</p>
+      <section class="section">
+        <h2>静态页面的限制</h2>
+        <p>化山湖现在发布在公开的静态站点上。登录入口不能把已经能打开的页面变成私密内容，隐藏一个地址也不能保护公开仓库里的文件。邮箱和验证码在服务接通之前不会被发送，也不会被保存在这台浏览器里。</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
+      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+    </footer>
+  </div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/links.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/invite.js"></script>
+</body>
+</html>

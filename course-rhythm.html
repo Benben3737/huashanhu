@@ -31,15 +31,14 @@
         <span><strong>化山湖</strong><small>技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="catalog.html" aria-current="page">学习目录</a><a href="notes.html">笔记</a><a href="portfolio.html">作品</a><a href="about.html">关于</a><a href="faq.html">问答</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="about.html">关于</a><a href="points.html">积分</a></nav>
       <div class="header-actions">
-        <button class="text-btn student-toggle" type="button" data-student-toggle><span data-student-label>体验学生视图</span></button>
+        <a class="text-btn" href="invite.html">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">课程和笔记是公开示例。学生视图只是界面演示，不收集账号。</p>
-    <p id="student-banner" class="student-banner" hidden>你正在查看公开示例的学生视图。没有报名、作业、消息或私密资料。<button class="text-btn" type="button" data-open-demo>查看说明</button><button class="text-btn" type="button" data-student-exit>退出学生视图</button></p>
+    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
-      <nav class="crumbs" aria-label="当前位置"><a href="catalog.html">学习目录</a><span aria-hidden="true">/</span><a href="catalog.html?domain=music#domain-music">音乐</a><span aria-hidden="true">/</span><a href="catalog.html?domain=music&amp;sub=listening#sub-listening">节奏与聆听</a><span aria-hidden="true">/</span><span aria-current="page">四拍听记页样例</span></nav>
+      <nav class="crumbs" aria-label="当前位置"><a href="community.html">社区课程作品</a><span aria-hidden="true">/</span><a href="community.html?domain=music#domain-music">音乐</a><span aria-hidden="true">/</span><a href="community.html?domain=music&amp;sub=listening#sub-listening">节奏与聆听</a><span aria-hidden="true">/</span><span aria-current="page">四拍听记页样例</span></nav>
     <header class="page-head">
       <p class="badge">示例课程</p>
       <h1>四拍听记页样例</h1>
@@ -64,34 +63,19 @@
     <p class="badge">外部链接</p>
     <h3>网盘资料</h3>
     <p class="slot-status">链接尚未配置</p>
-    <p>若以后填入网盘地址，能否下载由网盘服务商的分享设置决定。体验学生视图不会授予网盘访问权。 地址只写在 <code>assets/js/links.js</code>，当前为空。</p>
+    <p>若以后填入网盘地址，能否下载由网盘服务商的分享设置决定。登录状态也不会授予网盘访问权。 地址只写在 <code>assets/js/links.js</code>，当前为空。</p>
     <a class="slot-link" hidden>打开已配置的外部链接</a>
   </section>
     </div>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览，课程和笔记是示例。外链尚未配置，学生视图只是演示。</p>
+      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
+      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
-  <div id="demo-modal" class="modal" hidden>
-    <div class="modal-dialog" role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="demo-title" aria-describedby="demo-desc">
-      <div class="modal-head">
-        <h2 id="demo-title">界面演示，不是登录</h2>
-        <button class="icon-btn" type="button" data-close-demo aria-label="关闭演示说明">关闭</button>
-      </div>
-      <p id="demo-desc">这里不会要求密码，也不会发送验证码。体验学生视图只在这个浏览器标签里多显示一行公开提示，所有人看到的课文仍然相同。</p>
-      <div class="disabled-form">
-        <label>邮箱（已停用，不收集）
-          <input class="fake-field" type="text" disabled placeholder="不收集邮箱" value="">
-        </label>
-        <p>没有密码栏。请不要把真实密码输入到页面的任何位置。</p>
-      </div>
-      <div class="actions">
-        <button class="primary-btn" type="button" data-student-enter>体验学生视图</button>
-        <button class="ghost-btn" type="button" data-close-demo>返回</button>
-      </div>
-    </div>
-  </div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
 </body>

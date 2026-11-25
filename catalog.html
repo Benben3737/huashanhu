@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="按领域、子技能和示例课程分组浏览。筛选写在地址栏里，可以用后退返回。">
-  <title>学习目录 · 化山湖</title>
+  <meta name="description" content="这个地址已并入社区课程作品。">
+  <title>社区课程作品 · 化山湖</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -31,162 +31,31 @@
         <span><strong>化山湖</strong><small>技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="catalog.html" aria-current="page">学习目录</a><a href="notes.html">笔记</a><a href="portfolio.html">作品</a><a href="about.html">关于</a><a href="faq.html">问答</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html" aria-current="page">社区课程作品</a><a href="notes.html">学习笔记</a><a href="about.html">关于</a><a href="points.html">积分</a></nav>
       <div class="header-actions">
-        <button class="text-btn student-toggle" type="button" data-student-toggle><span data-student-label>体验学生视图</span></button>
+        <a class="text-btn" href="invite.html">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">课程和笔记是公开示例。学生视图只是界面演示，不收集账号。</p>
-    <p id="student-banner" class="student-banner" hidden>你正在查看公开示例的学生视图。没有报名、作业、消息或私密资料。<button class="text-btn" type="button" data-open-demo>查看说明</button><button class="text-btn" type="button" data-student-exit>退出学生视图</button></p>
+    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <header class="page-head">
-      <p class="kicker">领域 → 子技能 → 课程</p>
-      <h1>学习目录</h1>
-      <p class="lede">先选领域，再选这个领域里的子技能。搜索结果仍留在原来的分组中，不会把游泳和备菜排成互不相干的一列。</p>
-    </header>
-    <div data-hierarchy>
-      <form class="filters" data-filter-form action="catalog.html" method="get" role="search">
-    <div class="search-row">
-      <label>搜索示例课程
-        <input data-q id="q" name="q" type="search" placeholder="试试：游泳、钩手、备菜">
-      </label>
-    </div>
-    <div class="chip-row" role="group" aria-label="领域"><button class="chip" type="button" data-set-domain="" aria-pressed="true">全部领域</button><button class="chip" type="button" data-set-domain="music" aria-pressed="false">音乐</button><button class="chip" type="button" data-set-domain="fitness" aria-pressed="false">运动健身</button><button class="chip" type="button" data-set-domain="travel" aria-pressed="false">旅游</button><button class="chip" type="button" data-set-domain="cooking" aria-pressed="false">烹饪</button></div>
-    <div class="chip-row" role="group" aria-label="子技能" data-sub-row hidden><button class="chip" type="button" hidden data-set-sub="listening" data-domain="music" aria-pressed="false">节奏与聆听</button><button class="chip" type="button" hidden data-set-sub="archery" data-domain="fitness" aria-pressed="false">射箭</button><button class="chip" type="button" hidden data-set-sub="swim" data-domain="fitness" aria-pressed="false">游泳</button><button class="chip" type="button" hidden data-set-sub="hike" data-domain="fitness" aria-pressed="false">爬山/徒步</button><button class="chip" type="button" hidden data-set-sub="mantis" data-domain="fitness" aria-pressed="false">螳螂拳</button><button class="chip" type="button" hidden data-set-sub="walk" data-domain="travel" aria-pressed="false">城市步行</button><button class="chip" type="button" hidden data-set-sub="homecook" data-domain="cooking" aria-pressed="false">家常备菜</button></div>
-    <p data-count aria-live="polite">正在按领域分组显示示例课程</p>
-  </form>
-  <p class="empty-note" data-empty hidden>没有匹配的示例课程。</p>
-  <noscript><p class="empty-note">不运行脚本时，目录会完整展开。筛选和浏览器后退还原筛选，需要脚本。</p></noscript>
-      <section class="domain-block" data-domain-block data-domain="music" id="domain-music">
-        <p class="kicker">领域</p>
-        <h2>音乐</h2>
-        <p>示例领域。音乐课程只出现在这一组，不会和运动、旅游、烹饪排成同一列。</p>
-        <section class="subskill" data-group data-domain="music" data-sub="listening" id="sub-listening">
-              <p class="kicker">子技能</p>
-              <h3>节奏与聆听</h3>
-              <p>示例子技能。这里只有一门占位课程，用来展示卡片长什么样。</p>
-              <div class="card-grid">
-                <article class="course-card" data-entry data-domain="music" data-sub="listening" data-search="音乐 节奏与聆听 示例课程 四拍听记页样例 演示一节音乐页面如何放示意图。不是已经开出的听写课，也不布置作业。 一小节格子如何被画出来 用四个空格子说明节奏图在页面上的位置。">
-                      <p class="badge">示例课程</p>
-                      <h3><a href="course-rhythm.html">四拍听记页样例</a></h3>
-                      <p>演示一节音乐页面如何放示意图。不是已经开出的听写课，也不布置作业。</p>
-                      <p class="meta">1 节示例章节 · 音乐 / 节奏与聆听</p>
-                    </article>
-              </div>
-            </section>
-      </section><section class="domain-block" data-domain-block data-domain="fitness" id="domain-fitness">
-        <p class="kicker">领域</p>
-        <h2>运动健身</h2>
-        <p>示例领域。射箭、游泳、爬山/徒步和螳螂拳各自成组，互不混放。</p>
-        <section class="subskill" data-group data-domain="fitness" data-sub="archery" id="sub-archery">
-              <p class="kicker">子技能</p>
-              <h3>射箭</h3>
-              <p>示例子技能。页面不提供瞄准或放箭步骤。</p>
-              <div class="card-grid">
-                <article class="course-card" data-entry data-domain="fitness" data-sub="archery" data-search="运动健身 射箭 示例课程 射箭页样例 一张靶纸示意图，用来占位。不是射箭教程。 靶纸在课文里放哪里 同心圆只说明配图区域，不表示射程或环数标准。">
-                      <p class="badge">示例课程</p>
-                      <h3><a href="course-archery.html">射箭页样例</a></h3>
-                      <p>一张靶纸示意图，用来占位。不是射箭教程。</p>
-                      <p class="meta">1 节示例章节 · 运动健身 / 射箭</p>
-                    </article>
-              </div>
-            </section><section class="subskill" data-group data-domain="fitness" data-sub="swim" id="sub-swim">
-              <p class="kicker">子技能</p>
-              <h3>游泳</h3>
-              <p>示例子技能。课程卡在，章节故意留空。</p>
-              <div class="card-grid">
-                <article class="course-card" data-entry data-domain="fitness" data-sub="swim" data-search="运动健身 游泳 示例课程 换气页样例 这门示例课还没有章节。空列表用来演示「尚未编写」，不是已招生的班级。">
-                      <p class="badge">示例课程</p>
-                      <h3><a href="course-swim.html">换气页样例</a></h3>
-                      <p>这门示例课还没有章节。空列表用来演示「尚未编写」，不是已招生的班级。</p>
-                      <p class="meta">章节待编写 · 运动健身 / 游泳</p>
-                    </article>
-              </div>
-            </section><section class="subskill" data-group data-domain="fitness" data-sub="hike" id="sub-hike">
-              <p class="kicker">子技能</p>
-              <h3>爬山/徒步</h3>
-              <p>示例子技能。不提供路线、海拔或天气建议。</p>
-              <div class="card-grid">
-                <article class="course-card" data-entry data-domain="fitness" data-sub="hike" data-search="运动健身 爬山/徒步 示例课程 行前检查页样例 三个空栏表示课文可以怎样分节。地点名称待补充。 检查表的空栏 只保留栏位名称，不填写真实行程。">
-                      <p class="badge">示例课程</p>
-                      <h3><a href="course-hike.html">行前检查页样例</a></h3>
-                      <p>三个空栏表示课文可以怎样分节。地点名称待补充。</p>
-                      <p class="meta">1 节示例章节 · 运动健身 / 爬山/徒步</p>
-                    </article>
-              </div>
-            </section><section class="subskill" data-group data-domain="fitness" data-sub="mantis" id="sub-mantis">
-              <p class="kicker">子技能</p>
-              <h3>螳螂拳</h3>
-              <p>示例子技能。用公开常见的名称演示章节，不是私人课堂笔记。</p>
-              <div class="card-grid">
-                <article class="course-card" data-entry data-domain="fitness" data-sub="mantis" data-search="运动健身 螳螂拳 示例课程 螳螂拳入门 两节示例课文，演示文字、示意图、笔记和外链槽。不替代面授，也不提供训练计划。 一个名称在页面上的位置 用「钩手」这个名称演示标题、说明和几何示意图。 笔记、短视频和网盘各放哪里 外链槽明确写成尚未配置，学生视图也不能把它们变成可访问地址。">
-                      <p class="badge">示例课程</p>
-                      <h3><a href="course-tanglang.html">螳螂拳入门</a></h3>
-                      <p>两节示例课文，演示文字、示意图、笔记和外链槽。不替代面授，也不提供训练计划。</p>
-                      <p class="meta">2 节示例章节 · 运动健身 / 螳螂拳</p>
-                    </article>
-              </div>
-            </section>
-      </section><section class="domain-block" data-domain-block data-domain="travel" id="domain-travel">
-        <p class="kicker">领域</p>
-        <h2>旅游</h2>
-        <p>示例领域。城市和路线都留空，避免编造行程。</p>
-        <section class="subskill" data-group data-domain="travel" data-sub="walk" id="sub-walk">
-              <p class="kicker">子技能</p>
-              <h3>城市步行</h3>
-              <p>示例子技能。没有具体城市。</p>
-              <div class="card-grid">
-                <article class="course-card" data-entry data-domain="travel" data-sub="walk" data-search="旅游 城市步行 示例课程 半日步行页样例 一条没有地名的折线，表示行程页以后可以放在这里。 行程页还没有地名 起点、停留和返回都标记为待补充。">
-                      <p class="badge">示例课程</p>
-                      <h3><a href="course-walk.html">半日步行页样例</a></h3>
-                      <p>一条没有地名的折线，表示行程页以后可以放在这里。</p>
-                      <p class="meta">1 节示例章节 · 旅游 / 城市步行</p>
-                    </article>
-              </div>
-            </section>
-      </section><section class="domain-block" data-domain-block data-domain="cooking" id="domain-cooking">
-        <p class="kicker">领域</p>
-        <h2>烹饪</h2>
-        <p>示例领域。不提供可下厨的配方。</p>
-        <section class="subskill" data-group data-domain="cooking" data-sub="homecook" id="sub-homecook">
-              <p class="kicker">子技能</p>
-              <h3>家常备菜</h3>
-              <p>示例子技能。只演示备菜页的顺序栏。</p>
-              <div class="card-grid">
-                <article class="course-card" data-entry data-domain="cooking" data-sub="homecook" data-search="烹饪 家常备菜 示例课程 备菜顺序页样例 三步空栏：洗手、列出、切配。没有食材用量。 顺序栏，不是配方 用来展示烹饪课文的结构，不能照着做出一道菜。">
-                      <p class="badge">示例课程</p>
-                      <h3><a href="course-cook.html">备菜顺序页样例</a></h3>
-                      <p>三步空栏：洗手、列出、切配。没有食材用量。</p>
-                      <p class="meta">1 节示例章节 · 烹饪 / 家常备菜</p>
-                    </article>
-              </div>
-            </section>
-      </section>
-    </div>
+        <h1>正在打开社区课程作品</h1>
+        <p class="lede">这个地址已并入 <a id="compat-link" href="community.html">社区课程作品</a>。</p>
+      </header>
+      <script>
+        var target = "community.html" + location.search + location.hash;
+        document.getElementById("compat-link").setAttribute("href", target);
+        location.replace(target);
+      </script>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览，课程和笔记是示例。外链尚未配置，学生视图只是演示。</p>
+      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
+      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
-  <div id="demo-modal" class="modal" hidden>
-    <div class="modal-dialog" role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="demo-title" aria-describedby="demo-desc">
-      <div class="modal-head">
-        <h2 id="demo-title">界面演示，不是登录</h2>
-        <button class="icon-btn" type="button" data-close-demo aria-label="关闭演示说明">关闭</button>
-      </div>
-      <p id="demo-desc">这里不会要求密码，也不会发送验证码。体验学生视图只在这个浏览器标签里多显示一行公开提示，所有人看到的课文仍然相同。</p>
-      <div class="disabled-form">
-        <label>邮箱（已停用，不收集）
-          <input class="fake-field" type="text" disabled placeholder="不收集邮箱" value="">
-        </label>
-        <p>没有密码栏。请不要把真实密码输入到页面的任何位置。</p>
-      </div>
-      <div class="actions">
-        <button class="primary-btn" type="button" data-student-enter>体验学生视图</button>
-        <button class="ghost-btn" type="button" data-close-demo>返回</button>
-      </div>
-    </div>
-  </div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
 </body>
