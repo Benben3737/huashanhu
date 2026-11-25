@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="关于原型边界、演示登录和外链权限的说明。">
-  <title>问答 · 化山湖</title>
+  <meta name="description" content="化山湖静态预览的边界说明。">
+  <title>说明 · 化山湖</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -31,40 +31,33 @@
         <span><strong>化山湖</strong><small>技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="catalog.html">学习目录</a><a href="notes.html">笔记</a><a href="portfolio.html">作品</a><a href="about.html">关于</a><a href="faq.html" aria-current="page">问答</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="about.html">关于</a><a href="points.html">积分</a></nav>
       <div class="header-actions">
-        <button class="text-btn student-toggle" type="button" data-student-toggle><span data-student-label>体验学生视图</span></button>
+        <a class="text-btn" href="invite.html">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">课程和笔记是公开示例。学生视图只是界面演示，不收集账号。</p>
-    <p id="student-banner" class="student-banner" hidden>你正在查看公开示例的学生视图。没有报名、作业、消息或私密资料。<button class="text-btn" type="button" data-open-demo>查看说明</button><button class="text-btn" type="button" data-student-exit>退出学生视图</button></p>
+    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
-      <header class="page-head"><p class="kicker">问答</p><h1>先把边界说清楚。</h1></header>
-    <div class="faq"><details><summary>这个网站现在能上课吗？</summary><p>不能。所有课程都标成示例课程，章节里的文字是版式占位。</p></details><details><summary>体验学生视图会打开隐藏内容吗？</summary><p>不会。它只在当前浏览器标签多显示一行提示。刷新后如果还在，是因为这个标签自己记住了界面状态，没有上传。</p></details><details><summary>为什么短视频和网盘打不开？</summary><p>因为链接尚未配置，按钮也没有地址。以后只在 assets/js/links.js 填写 http 或 https。网盘能否访问由网盘服务商决定，本站演示不能授权。</p></details><details><summary>页面会收集密码或邮箱吗？</summary><p>不会。演示里的邮箱框是停用的，没有密码栏，也没有验证码。</p></details><details><summary>目录为什么不能把所有课排成一列？</summary><p>音乐、运动健身、旅游、烹饪是不同领域。筛选会先收窄领域，再收窄子技能，结果仍留在原来的分组里。</p></details><details><summary>发布到 GitHub Pages 之后，登录会变成真的吗？</summary><p>不会。这仍是静态文件。真账号、报名和私密笔记需要另做后端，不在这个原型里。</p></details></div>
+      <header class="page-head">
+        <p class="kicker">说明</p>
+        <h1>这些边界还在。</h1>
+      </header>
+      <div class="faq">
+        <details open><summary>现在能互相看见发布的课程吗？</summary><p>不能。标成示例的内容是事先放在页面上的。你自己保存的草稿只在这台浏览器里。</p></details>
+        <details><summary>学习笔记会自动公开吗？</summary><p>不会。自动保存只写在本机。学习进度不进入评价。课程感受要你勾选同意后，才出现在本机评价预览。</p></details>
+        <details><summary>邀请登录会发邮件吗？</summary><p>不会。验证服务尚未接通，页面不会显示已发送或登录成功，也不会保存邮箱。</p></details>
+        <details><summary>积分会因为刷新变多吗？</summary><p>不会。积分页面使用单独标出的示例账本，不根据草稿计分。</p></details>
+      </div>
+      <p><a href="about.html#boundaries">回到关于里的社区边界</a></p>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览，课程和笔记是示例。外链尚未配置，学生视图只是演示。</p>
+      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
+      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
-  <div id="demo-modal" class="modal" hidden>
-    <div class="modal-dialog" role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="demo-title" aria-describedby="demo-desc">
-      <div class="modal-head">
-        <h2 id="demo-title">界面演示，不是登录</h2>
-        <button class="icon-btn" type="button" data-close-demo aria-label="关闭演示说明">关闭</button>
-      </div>
-      <p id="demo-desc">这里不会要求密码，也不会发送验证码。体验学生视图只在这个浏览器标签里多显示一行公开提示，所有人看到的课文仍然相同。</p>
-      <div class="disabled-form">
-        <label>邮箱（已停用，不收集）
-          <input class="fake-field" type="text" disabled placeholder="不收集邮箱" value="">
-        </label>
-        <p>没有密码栏。请不要把真实密码输入到页面的任何位置。</p>
-      </div>
-      <div class="actions">
-        <button class="primary-btn" type="button" data-student-enter>体验学生视图</button>
-        <button class="ghost-btn" type="button" data-close-demo>返回</button>
-      </div>
-    </div>
-  </div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
 </body>

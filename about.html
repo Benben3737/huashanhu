@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="讲授者介绍尚未填写。原型不代写经历、资质或联系方式。">
+  <meta name="description" content="化山湖技能社区的介绍、边界、鸣谢与赞助说明。">
   <title>关于 · 化山湖</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
@@ -31,44 +31,51 @@
         <span><strong>化山湖</strong><small>技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="catalog.html">学习目录</a><a href="notes.html">笔记</a><a href="portfolio.html">作品</a><a href="about.html" aria-current="page">关于</a><a href="faq.html">问答</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="about.html" aria-current="page">关于</a><a href="points.html">积分</a></nav>
       <div class="header-actions">
-        <button class="text-btn student-toggle" type="button" data-student-toggle><span data-student-label>体验学生视图</span></button>
+        <a class="text-btn" href="invite.html">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">课程和笔记是公开示例。学生视图只是界面演示，不收集账号。</p>
-    <p id="student-banner" class="student-banner" hidden>你正在查看公开示例的学生视图。没有报名、作业、消息或私密资料。<button class="text-btn" type="button" data-open-demo>查看说明</button><button class="text-btn" type="button" data-student-exit>退出学生视图</button></p>
+    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <header class="page-head">
-      <p class="kicker">关于</p>
-      <h1>资料待本人填写。</h1>
-      <p class="lede">「化山湖」是这个空间的名字，「技能学习空间」说明它用来做什么。山形和湖面只是页面上的图形。下面这些仍待本人填写。</p>
-    </header>
-    <dl class="fact-grid"><div class="fact"><dt>称呼</dt><dd>待补充资料</dd></div><div class="fact"><dt>简介</dt><dd>待补充资料</dd></div><div class="fact"><dt>从教经历</dt><dd>待补充资料</dd></div><div class="fact"><dt>资质证书</dt><dd>待补充资料</dd></div><div class="fact"><dt>联系方式</dt><dd>待补充资料</dd></div></dl>
+        <p class="kicker">关于</p>
+        <h1>化山湖是一个技能社区。</h1>
+        <p class="lede">它不是某一个人的履历。名字和山湖图形用来识别这个空间：大家在这里分享会的技能，也学习别人分享的东西。</p>
+      </header>
+      <section class="info-grid">
+        <article class="quiet-card"><h2>做什么</h2><p>让人把一门技能整理成课程、心得或作品，也让别人按领域找到这些内容，留下自己的学习笔记。</p></article>
+        <article class="quiet-card"><h2>适合谁</h2><p>愿意把经验说清楚的人，以及想跟着别人的分享来学的人。一个人可以同时是分享者和学习者。</p></article>
+        <article class="quiet-card"><h2>如何分享</h2><p>在社区课程作品里选一种模板，把章节写完，先保存在本机。真正让其他人看见，要等账号和发布后台接通。</p></article>
+        <article class="quiet-card"><h2>如何学习</h2><p>先看标成示例或将来由别人公开的内容，再在学习笔记里写下进度和感悟。进度默认只有自己可见。</p></article>
+      </section>
+      <section class="section" id="boundaries">
+        <h2>内容和社区边界</h2>
+        <p>不把未配置的外链假装成可以打开的资源。不把示例作者、示例评价写成真实用户。不在静态页面里收集密码，也不靠隐藏链接保护已经公开的文件。邀请试用目前只是入口，验证服务还没有接通，因此没有开放注册。</p>
+        <p>更细的数据与权限约定写在 <a href="backend.html">后台接入说明</a>。</p>
+      </section>
+      <section class="section" id="thanks">
+        <h2>鸣谢</h2>
+        <article class="quiet-card">
+          <p>还没有被确认的鸣谢对象。这里不列出虚构的人名、机构或金额。</p>
+        </article>
+      </section>
+      <section class="section" id="sponsor">
+        <h2>赞助</h2>
+        <article class="quiet-card">
+          <p>收款方式待配置。现在不能付款，也没有已经开通的赞助渠道。</p>
+          <p class="status-line">这一区只保留位置。没有支付按钮，避免看起来像可以付钱。</p>
+        </article>
+      </section>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览，课程和笔记是示例。外链尚未配置，学生视图只是演示。</p>
+      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
+      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
-  <div id="demo-modal" class="modal" hidden>
-    <div class="modal-dialog" role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="demo-title" aria-describedby="demo-desc">
-      <div class="modal-head">
-        <h2 id="demo-title">界面演示，不是登录</h2>
-        <button class="icon-btn" type="button" data-close-demo aria-label="关闭演示说明">关闭</button>
-      </div>
-      <p id="demo-desc">这里不会要求密码，也不会发送验证码。体验学生视图只在这个浏览器标签里多显示一行公开提示，所有人看到的课文仍然相同。</p>
-      <div class="disabled-form">
-        <label>邮箱（已停用，不收集）
-          <input class="fake-field" type="text" disabled placeholder="不收集邮箱" value="">
-        </label>
-        <p>没有密码栏。请不要把真实密码输入到页面的任何位置。</p>
-      </div>
-      <div class="actions">
-        <button class="primary-btn" type="button" data-student-enter>体验学生视图</button>
-        <button class="ghost-btn" type="button" data-close-demo>返回</button>
-      </div>
-    </div>
-  </div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
 </body>
