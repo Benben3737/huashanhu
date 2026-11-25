@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>确认邮箱 · 化山湖</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#content">跳到主要内容</a>
+  <div class="ink-field" aria-hidden="true">
+    <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="mistA" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8ecfc8" stop-opacity="0.18"/>
+          <stop offset="72%" stop-color="#8ecfc8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse class="mist mist-a" cx="180" cy="140" rx="320" ry="140" fill="url(#mistA)"/>
+      <ellipse class="mist mist-b" cx="1220" cy="220" rx="360" ry="150" fill="url(#mistA)"/>
+    </svg>
+  </div>
+  <div data-inert-root>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
+        <img src="assets/img/mark.svg" alt="" width="42" height="42">
+        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html">关于</a></nav>
+      <div class="header-actions">
+        <a class="text-btn" href="invite.html">注册登录</a>
+      </div>
+    </header>
+    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <main id="content" class="shell">
+      <header class="page-head">
+        <p class="kicker">账号</p>
+        <h1>确认邮箱</h1>
+        <p class="lede">验证码只交给身份服务核对。核对前，地址栏里的一次性参数会被清掉，也不会写入本机存储。</p>
+      </header>
+      <p data-callback-status class="status-line" role="status" aria-live="polite">正在查看链接。</p>
+      <p><a href="invite.html">返回注册登录</a></p>
+    </main>
+    <footer class="site-footer">
+      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
+    </footer>
+  </div>
+  <script src="assets/js/auth-config.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/links.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script>
+    (function () {
+      const status = document.querySelector("[data-callback-status]");
+      const params = new URLSearchParams(location.search);
+      const code = params.get("oobCode") || "";
+      history.replaceState({}, "", location.pathname);
+      if (!window.HuashanhuAuth.configured()) {
+        status.textContent = "身份服务还没配置，这个链接无法核对。没有建立登录。";
+        return;
+      }
+      if (!code) {
+        status.textContent = "链接里没有可交给身份服务的验证参数。没有建立登录。";
+        return;
+      }
+      window.HuashanhuAuth.applyCode(code).then(function (result) {
+        status.textContent = result.message;
+      }).catch(function () {
+        status.textContent = "没有连上身份服务。没有建立登录。";
+      });
+    })();
+  </script>
+</body>
+</html>
