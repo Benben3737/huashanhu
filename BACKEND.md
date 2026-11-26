@@ -4,7 +4,7 @@
 
 接通后需要：
 
-- 邀请验证与 HttpOnly 会话，不把登录放在 localStorage。
+- 账号走 Authing 托管登录（授权码 + PKCE，RS256）。公开的用户池 ID 和应用 ID 在 `assets/js/auth-config.js`。不要提交 App Secret。未验证邮箱不算登录。免费池每日验证邮件额度要等实名认证，目前还没有做实名认证。GitHub Pages 不能替 Authing 设置 HttpOnly cookie，所以核验通过后的登录标记只留在当前标签的 sessionStorage，退出时清除。积分和课程发布仍不因此接通。
 - 服务器保存的课程发布与撤回。
 - 私人笔记、学习进度，以及单独存储的评价同意。
 - 积分只在服务器确认唯一的专项课程发布后 +1。笔记和作品不加这 1 分。初始额度待使用方确定。

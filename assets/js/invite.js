@@ -1,22 +1,29 @@
 (function () {
-  const root = document.querySelector("[data-invite]");
-  if (!root) return;
-  const status = document.querySelector("[data-invite-status]");
+  const root = document.querySelector("[data-account]");
+  if (!root || !window.HuashanhuAuth) return;
+  const status = document.querySelector("[data-account-status]");
+  const sessionLine = document.querySelector("[data-account-session]");
 
-  async function refuse(form) {
-    const result = await window.HuashanhuApi.verifyInvite();
-    Array.from(form.elements).forEach((field) => {
-      if ("value" in field && field.type !== "submit" && field.type !== "button") field.value = "";
-    });
-    status.textContent = result.ok
-      ? "出现了意外的成功返回。本页不会把它显示成已登录。"
-      : "邀请验证服务尚未接通。邮箱、验证码和邀请链接没有发送，也没有保存，没有建立登录。";
+  function showSession() {
+    const session = window.HuashanhuAuth.session();
+    if (!sessionLine) return;
+    sessionLine.textContent = session
+      ? "本次标签已登录：" + (session.email || session.sub) + "。本机草稿没有绑定到这个账号。"
+      : "当前没有已验证的登录。";
   }
 
-  root.querySelectorAll("form").forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      refuse(form);
+  root.querySelector("[data-start-login]").addEventListener("click", () => {
+    status.textContent = "正在转到 Authing。密码只在 Authing 页面输入。";
+    window.HuashanhuAuth.startLogin().catch(() => {
+      status.textContent = "没有连上 Authing。没有登录，也没有建立会话。";
     });
   });
+
+  const logout = root.querySelector("[data-logout]");
+  if (logout) {
+    logout.addEventListener("click", () => {
+      window.HuashanhuAuth.logout();
+    });
+  }
+  showSession();
 })();

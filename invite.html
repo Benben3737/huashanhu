@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="试用期邮箱邀请登录入口。验证服务尚未接通。">
-  <title>邀请登录 · 化山湖</title>
+  <meta name="description" content="到 Authing 注册或登录。密码不经过化山湖页面。">
+  <title>注册 / 登录 · 化山湖</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -31,41 +31,30 @@
         <span><strong>化山湖</strong><small>技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="about.html">关于</a><a href="points.html">积分</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html" aria-current="page">邀请登录</a>
+        <a class="text-btn" href="invite.html" aria-current="page">注册 / 登录</a>
       </div>
     </header>
     <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <header class="page-head">
-        <p class="kicker">邀请</p>
-        <h1>邀请登录</h1>
-        <p class="lede">试用期打算用邮箱邀请进入。现在没有开放注册，也还不能发送或核验邀请。</p>
+        <p class="kicker">账号</p>
+        <h1>注册 / 登录</h1>
+        <p class="lede">注册是开放的，不需要邀请。邮箱和验证码只在 Authing 的页面里填写，密码不会经过化山湖。验证完成并回到本站之后，这次浏览器标签才算已登录。</p>
       </header>
-      <div class="info-grid" data-invite>
-        <form class="composer quiet-card">
-          <h2>邮箱与验证码</h2>
-          <label>邀请邮箱
-            <input name="email" type="email" autocomplete="off" inputmode="email" placeholder="只在验证服务接通后才会使用">
-          </label>
-          <label>验证码
-            <input name="code" type="text" autocomplete="off" inputmode="numeric" placeholder="服务接通前不会核验">
-          </label>
-          <button class="primary-btn" type="submit">继续</button>
-        </form>
-        <form class="composer quiet-card">
-          <h2>邀请链接</h2>
-          <label>链接
-            <input name="link" type="url" autocomplete="off" placeholder="服务接通前不会打开会话">
-          </label>
-          <button class="primary-btn" type="submit">使用邀请链接</button>
-        </form>
-      </div>
-      <p data-invite-status class="status-line" role="status" aria-live="polite">还没有提交。提交后也不会显示已发送或登录成功。</p>
+      <section class="quiet-card" data-account>
+        <p data-account-session class="status-line" aria-live="polite">正在查看本次标签的登录状态。</p>
+        <div class="actions">
+          <button class="primary-btn" type="button" data-start-login>前往 Authing 注册或登录</button>
+          <button class="ghost-btn" type="button" data-logout>退出登录</button>
+        </div>
+        <p data-account-status class="status-line" role="status" aria-live="polite">还没有跳转。连不上 Authing 时，不会显示登录成功。</p>
+      </section>
       <section class="section">
-        <h2>静态页面的限制</h2>
-        <p>化山湖现在发布在公开的静态站点上。登录入口不能把已经能打开的页面变成私密内容，隐藏一个地址也不能保护公开仓库里的文件。邮箱和验证码在服务接通之前不会被发送，也不会被保存在这台浏览器里。</p>
+        <h2>验证邮件额度</h2>
+        <p>Authing 免费用户池的每日验证邮件额度，要等账号完成实名认证后才会放开。实名认证还没有做，所以现在注册时可能收不到验证码。本站不会假装邮件已经发出。</p>
+        <p>登录不会把已经公开的页面藏起来，也不会上传本机草稿，更不会接通积分账本或课程发布。</p>
       </section>
     </main>
     <footer class="site-footer">
@@ -78,6 +67,8 @@
   <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/auth-config.js"></script>
+  <script src="assets/js/authing.js"></script>
   <script src="assets/js/invite.js"></script>
 </body>
 </html>
