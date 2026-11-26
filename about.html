@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <a class="skip" href="#content">跳到主要内容</a>
+  <a class="skip" href="#content" data-copy="site.skip">跳到主要内容</a>
   <div class="ink-field" aria-hidden="true">
     <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -28,55 +28,60 @@
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
         <img src="assets/img/mark.svg" alt="" width="42" height="42">
-        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+        <span><strong data-copy="site.brand">化山湖</strong><small data-copy="site.tagline">技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html" aria-current="page">关于</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" data-copy="site.nav.home">首页</a><a href="community.html" data-copy="site.nav.community">社区课程作品</a><a href="notes.html" data-copy="site.nav.notes">学习笔记</a><a href="points.html" data-copy="site.nav.points">积分</a><a href="about.html" aria-current="page" data-copy="site.nav.about">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html">邀请登录</a>
+        <a class="text-btn" href="invite.html" data-copy="site.nav.login">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <p class="proto-banner" data-copy="site.banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <header class="page-head">
-        <p class="kicker">关于</p>
-        <h1>化山湖是一个技能社区。</h1>
-        <p class="lede">它不是某一个人的履历。名字和山湖图形用来识别这个空间：大家在这里分享会的技能，也学习别人分享的东西。</p>
+        <p class="kicker" data-copy="about.01">关于</p>
+        <h1 data-copy="about.02">化山湖是一个技能社区。</h1>
+        <p class="lede" data-copy="about.03">它不是某一个人的履历。名字和山湖图形用来识别这个空间：大家在这里分享会的技能，也学习别人分享的东西。</p>
       </header>
       <section class="info-grid">
-        <article class="quiet-card"><h2>做什么</h2><p>让人把一门技能整理成课程、心得或作品，也让别人按领域找到这些内容，留下自己的学习笔记。</p></article>
-        <article class="quiet-card"><h2>适合谁</h2><p>愿意把经验说清楚的人，以及想跟着别人的分享来学的人。一个人可以同时是分享者和学习者。</p></article>
-        <article class="quiet-card"><h2>如何分享</h2><p>在社区课程作品里选一种模板，把章节写完，先保存在本机。真正让其他人看见，要等账号和发布后台接通。</p></article>
-        <article class="quiet-card"><h2>如何学习</h2><p>先看标成示例或将来由别人公开的内容，再在学习笔记里写下进度和感悟。进度默认只有自己可见。</p></article>
+        <article class="quiet-card"><h2 data-copy="about.04">做什么</h2><p data-copy="about.05">让人把一门技能整理成课程、心得或作品，也让别人按领域找到这些内容，留下自己的学习笔记。</p></article>
+        <article class="quiet-card"><h2 data-copy="about.06">适合谁</h2><p data-copy="about.07">愿意把经验说清楚的人，以及想跟着别人的分享来学的人。一个人可以同时是分享者和学习者。</p></article>
+        <article class="quiet-card"><h2 data-copy="about.08">如何分享</h2><p data-copy="about.09">在社区课程作品里选一种模板，把章节写完，先保存在本机。真正让其他人看见，要等账号和发布后台接通。</p></article>
+        <article class="quiet-card"><h2 data-copy="about.10">如何学习</h2><p data-copy="about.11">先看标成示例或将来由别人公开的内容，再在学习笔记里写下进度和感悟。进度默认只有自己可见。</p></article>
       </section>
       <section class="section" id="boundaries">
-        <h2>内容和社区边界</h2>
-        <p>不把未配置的外链假装成可以打开的资源。不把示例作者、示例评价写成真实用户。社区按邀请打开具体课程：站主在 Authing 添加邮箱并关闭自行注册。能完成登录才表示已被邀请。首页、本页和社区课程目录可以先看。免费池的验证邮件额度还要等实名认证，而实名认证还没有做。登录也不会接通积分发放或课程发布。</p>
-        <p>更细的数据与权限约定写在 <a href="backend.html">后台接入说明</a>。</p>
+        <h2 data-copy="about.12">内容和社区边界</h2>
+        <p data-copy="about.13">不把未配置的外链假装成可以打开的资源。不把示例作者、示例评价写成真实用户。社区按邀请打开具体课程：站主在 Authing 添加邮箱并关闭自行注册。能完成登录才表示已被邀请。首页、本页和社区课程目录可以先看。免费池的验证邮件额度还要等实名认证，而实名认证还没有做。登录也不会接通积分发放或课程发布。</p>
+        <p><span data-copy="about.15">更细的数据与权限约定写在 </span><a href="backend.html" data-copy="about.14">后台接入说明</a><span data-copy="about.16">。</span></p>
       </section>
       <section class="section" id="thanks">
-        <h2>鸣谢</h2>
+        <h2 data-copy="about.17">鸣谢</h2>
         <article class="quiet-card">
-          <p>还没有被确认的鸣谢对象。这里不列出虚构的人名、机构或金额。</p>
+          <p data-copy="about.18">还没有被确认的鸣谢对象。这里不列出虚构的人名、机构或金额。</p>
         </article>
       </section>
       <section class="section" id="sponsor">
-        <h2>赞助</h2>
+        <h2 data-copy="about.19">赞助</h2>
         <article class="quiet-card">
-          <p>收款方式待配置。现在不能付款，也没有已经开通的赞助渠道。</p>
-          <p class="status-line">这一区只保留位置。没有支付按钮，避免看起来像可以付钱。</p>
+          <p data-copy="about.20">收款方式待配置。现在不能付款，也没有已经开通的赞助渠道。</p>
+          <p class="status-line" data-copy="about.21">这一区只保留位置。没有支付按钮，避免看起来像可以付钱。</p>
         </article>
       </section>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
-      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
-      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+      <p data-copy="site.footer">化山湖 · 技能学习空间。邀请登录和社区提交已经可以使用。学习笔记和本机草稿默认只留在这台设备上。示例课程的视频和外链还没有配置。</p>
+      <p class="device-note" data-copy="site.device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local data-copy="site.clear">清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
   <script src="assets/js/store.js"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/auth-config.js"></script>
+  <script src="assets/js/authing.js"></script>
+  <script src="assets/js/cloudbase-config.js"></script>
+  <script src="assets/js/cloudbase-api.js"></script>
+  <script src="assets/js/copy.js"></script>
 </body>
 </html>

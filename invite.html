@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <a class="skip" href="#content">跳到主要内容</a>
+  <a class="skip" href="#content" data-copy="site.skip">跳到主要内容</a>
   <div class="ink-field" aria-hidden="true">
     <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -28,39 +28,39 @@
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
         <img src="assets/img/mark.svg" alt="" width="42" height="42">
-        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+        <span><strong data-copy="site.brand">化山湖</strong><small data-copy="site.tagline">技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html">关于</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" data-copy="site.nav.home">首页</a><a href="community.html" data-copy="site.nav.community">社区课程作品</a><a href="notes.html" data-copy="site.nav.notes">学习笔记</a><a href="points.html" data-copy="site.nav.points">积分</a><a href="about.html" data-copy="site.nav.about">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html" aria-current="page">邀请登录</a>
+        <a class="text-btn" href="invite.html" aria-current="page" data-copy="site.nav.login">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <p class="proto-banner" data-copy="site.banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <header class="page-head">
-        <p class="kicker">账号</p>
-        <h1>邀请登录</h1>
-        <p class="lede">这是邀请制。站主先在 Authing 的用户管理里添加你的邮箱，并关闭自行注册。能完成 Authing 登录，就表示这个邮箱已被邀请；不能完成，就还没有被邀请。邮箱和验证码只在 Authing 页面填写，密码不经过化山湖。</p>
+        <p class="kicker" data-copy="invite.01">账号</p>
+        <h1 data-copy="invite.02">邀请登录</h1>
+        <p class="lede" data-copy="invite.03">这是邀请制。站主先在 Authing 的用户管理里添加你的邮箱，并关闭自行注册。能完成 Authing 登录，就表示这个邮箱已被邀请；不能完成，就还没有被邀请。邮箱和验证码只在 Authing 页面填写，密码不经过化山湖。</p>
       </header>
       <section class="quiet-card" data-account>
         <p data-account-session class="status-line" aria-live="polite">正在查看本次标签的登录状态。</p>
         <div class="actions">
-          <button class="primary-btn" type="button" data-start-login>前往 Authing 登录</button>
-          <button class="ghost-btn" type="button" data-logout>退出登录</button>
+          <button class="primary-btn" type="button" data-start-login data-copy="invite.04">前往 Authing 登录</button>
+          <button class="ghost-btn" type="button" data-logout data-copy="invite.05">退出登录</button>
         </div>
         <p data-account-status class="status-line" role="status" aria-live="polite">还没有跳转。连不上 Authing 时，不会显示登录成功。</p>
       </section>
       <section class="section">
-        <h2>验证邮件额度</h2>
-        <p>Authing 免费用户池的每日验证邮件额度，要等账号完成实名认证后才会放开。实名认证还没有做，所以受邀的人现在也可能收不到验证码。本站不会假装邮件已经发出。</p>
-        <p>登录不会上传本机草稿，也不会接通积分发放或课程公开发布。页面文件仍在公开仓库里。</p>
+        <h2 data-copy="invite.06">验证邮件额度</h2>
+        <p data-copy="invite.07">Authing 免费用户池的每日验证邮件额度，要等账号完成实名认证后才会放开。实名认证还没有做，所以受邀的人现在也可能收不到验证码。本站不会假装邮件已经发出。</p>
+        <p data-copy="invite.08">登录不会上传本机草稿，也不会接通积分发放或课程公开发布。页面文件仍在公开仓库里。</p>
       </section>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
-      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
-      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+      <p data-copy="site.footer">化山湖 · 技能学习空间。邀请登录和社区提交已经可以使用。学习笔记和本机草稿默认只留在这台设备上。示例课程的视频和外链还没有配置。</p>
+      <p class="device-note" data-copy="site.device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local data-copy="site.clear">清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
   <script src="assets/js/store.js"></script>
@@ -70,5 +70,8 @@
   <script src="assets/js/auth-config.js"></script>
   <script src="assets/js/authing.js"></script>
   <script src="assets/js/invite.js"></script>
+  <script src="assets/js/cloudbase-config.js"></script>
+  <script src="assets/js/cloudbase-api.js"></script>
+  <script src="assets/js/copy.js"></script>
 </body>
 </html>

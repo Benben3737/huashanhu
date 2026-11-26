@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <a class="skip" href="#content">跳到主要内容</a>
+  <a class="skip" href="#content" data-copy="site.skip">跳到主要内容</a>
   <div class="ink-field" aria-hidden="true">
     <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -28,61 +28,66 @@
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
         <img src="assets/img/mark.svg" alt="" width="42" height="42">
-        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+        <span><strong data-copy="site.brand">化山湖</strong><small data-copy="site.tagline">技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html">关于</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" data-copy="site.nav.home">首页</a><a href="community.html" data-copy="site.nav.community">社区课程作品</a><a href="notes.html" data-copy="site.nav.notes">学习笔记</a><a href="points.html" data-copy="site.nav.points">积分</a><a href="about.html" data-copy="site.nav.about">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html">邀请登录</a>
+        <a class="text-btn" href="invite.html" data-copy="site.nav.login">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <p class="proto-banner" data-copy="site.banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <header class="page-head">
-        <p class="kicker">后台</p>
-        <h1>后台接入说明</h1>
-        <p class="lede">当前网站是静态文件。下面这些能力还没有服务器。页面上的适配层不会发出网络请求。</p>
+        <p class="kicker" data-copy="backend.01">后台</p>
+        <h1 data-copy="backend.02">后台接入说明</h1>
+        <p class="lede" data-copy="backend.03">当前网站是静态文件。下面这些能力还没有服务器。页面上的适配层不会发出网络请求。</p>
       </header>
       <section class="section">
-        <h2>现在可用</h2>
-        <p>本机保存草稿和学习笔记、再载入、编辑、确认后删除、只导出选中的一份内容、用浏览器打印或另存为 PDF。这些都只发生在当前浏览器。</p>
+        <h2 data-copy="backend.04">现在可用</h2>
+        <p data-copy="backend.05">本机保存草稿和学习笔记、再载入、编辑、确认后删除、只导出选中的一份内容、用浏览器打印或另存为 PDF。这些都只发生在当前浏览器。</p>
       </section>
       <section class="section">
-        <h2>接通后才算数</h2>
+        <h2 data-copy="backend.06">接通后才算数</h2>
         <ul>
-          <li>账号是邀请制。Authing 控制台关闭自行注册，站主在用户管理里添加邮箱。不使用付费注册白名单，本仓库不保存邮箱名单。浏览器只发起授权码加 PKCE，令牌由 Authing 签发并用 RS256 核验。未验证邮箱不算登录。</li>
-          <li>课程的共享发布、修改和撤回。由服务器保存，并核对作者身份。</li>
-          <li>评价同意与撤回。课程感受和私人笔记、学习进度分开存储。撤回后公开评价不再包含那段感受。</li>
-          <li>积分台账。只有服务器确认一次唯一的专项课程发布后才 +1。笔记和作品不加这 1 分。初始额度仍待确定，不能由前端自定。</li>
-          <li>兑换和线下邀约。比例、库存、预约流程都待确定，接通前不产生订单或消息。</li>
+          <li data-copy="backend.07">账号是邀请制。Authing 控制台关闭自行注册，站主在用户管理里添加邮箱。不使用付费注册白名单，本仓库不保存邮箱名单。浏览器只发起授权码加 PKCE，令牌由 Authing 签发并用 RS256 核验。未验证邮箱不算登录。</li>
+          <li data-copy="backend.08">课程的共享发布、修改和撤回。由服务器保存，并核对作者身份。</li>
+          <li data-copy="backend.09">评价同意与撤回。课程感受和私人笔记、学习进度分开存储。撤回后公开评价不再包含那段感受。</li>
+          <li data-copy="backend.10">积分台账。只有服务器确认一次唯一的专项课程发布后才 +1。笔记和作品不加这 1 分。初始额度仍待确定，不能由前端自定。</li>
+          <li data-copy="backend.11">兑换和线下邀约。比例、库存、预约流程都待确定，接通前不产生订单或消息。</li>
         </ul>
       </section>
       <section class="section">
-        <h2>建议中的接口</h2>
-        <p>这些路径只是契约，静态站点没有调用它们。</p>
+        <h2 data-copy="backend.12">建议中的接口</h2>
+        <p data-copy="backend.13">这些路径只是契约，静态站点没有调用它们。</p>
         <ul>
-          <li>邀请不走本站接口。站主在 Authing 用户管理里添加受邀邮箱。</li>
-          <li>POST /api/courses，创建专项课程；DELETE /api/courses/:id，撤回。</li>
-          <li>PUT /api/notes/:id，保存私有笔记。进度和感悟仅本人可读。</li>
-          <li>PUT /api/notes/:id/feeling-consent，单独记录是否允许把课程感受纳入评价。</li>
-          <li>POST /api/points/awards，只由服务器在课程发布核验后写入。</li>
-          <li>POST /api/redemptions 与 POST /api/meetups，等规则确定后再启用。</li>
+          <li data-copy="backend.14">邀请不走本站接口。站主在 Authing 用户管理里添加受邀邮箱。</li>
+          <li data-copy="backend.15">POST /api/courses，创建专项课程；DELETE /api/courses/:id，撤回。</li>
+          <li data-copy="backend.16">PUT /api/notes/:id，保存私有笔记。进度和感悟仅本人可读。</li>
+          <li data-copy="backend.17">PUT /api/notes/:id/feeling-consent，单独记录是否允许把课程感受纳入评价。</li>
+          <li data-copy="backend.18">POST /api/points/awards，只由服务器在课程发布核验后写入。</li>
+          <li data-copy="backend.19">POST /api/redemptions 与 POST /api/meetups，等规则确定后再启用。</li>
         </ul>
       </section>
       <section class="section">
-        <h2>还需要使用方决定</h2>
-        <p>新用户初始积分的数值、兑换比例、库存、线下预约如何达成、课程撤销后积分是否收回、怎样判定重复发布和作弊。这些不要在静态页面里先填一个数。</p>
+        <h2 data-copy="backend.20">还需要使用方决定</h2>
+        <p data-copy="backend.21">新用户初始积分的数值、兑换比例、库存、线下预约如何达成、课程撤销后积分是否收回、怎样判定重复发布和作弊。这些不要在静态页面里先填一个数。</p>
       </section>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
-      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
-      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+      <p data-copy="site.footer">化山湖 · 技能学习空间。邀请登录和社区提交已经可以使用。学习笔记和本机草稿默认只留在这台设备上。示例课程的视频和外链还没有配置。</p>
+      <p class="device-note" data-copy="site.device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local data-copy="site.clear">清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
   <script src="assets/js/store.js"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/auth-config.js"></script>
+  <script src="assets/js/authing.js"></script>
+  <script src="assets/js/cloudbase-config.js"></script>
+  <script src="assets/js/cloudbase-api.js"></script>
+  <script src="assets/js/copy.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <a class="skip" href="#content">跳到主要内容</a>
+  <a class="skip" href="#content" data-copy="site.skip">跳到主要内容</a>
   <div class="ink-field" aria-hidden="true">
     <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -28,37 +28,42 @@
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
         <img src="assets/img/mark.svg" alt="" width="42" height="42">
-        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+        <span><strong data-copy="site.brand">化山湖</strong><small data-copy="site.tagline">技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html">关于</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" data-copy="site.nav.home">首页</a><a href="community.html" data-copy="site.nav.community">社区课程作品</a><a href="notes.html" data-copy="site.nav.notes">学习笔记</a><a href="points.html" data-copy="site.nav.points">积分</a><a href="about.html" data-copy="site.nav.about">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html">邀请登录</a>
+        <a class="text-btn" href="invite.html" data-copy="site.nav.login">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <p class="proto-banner" data-copy="site.banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <header class="page-head">
-        <p class="kicker">说明</p>
-        <h1>这些边界还在。</h1>
+        <p class="kicker" data-copy="faq.01">说明</p>
+        <h1 data-copy="faq.02">这些边界还在。</h1>
       </header>
       <div class="faq">
-        <details open><summary>现在能互相看见发布的课程吗？</summary><p>不能。标成示例的内容是事先放在页面上的。你自己保存的草稿只在这台浏览器里。</p></details>
-        <details><summary>学习笔记会自动公开吗？</summary><p>不会。自动保存只写在本机。学习进度不进入评价。课程感受要你勾选同意后，才出现在本机评价预览。</p></details>
-        <details><summary>可以自己注册吗？</summary><p>不能。站主在 Authing 里关闭自行注册，并手动添加受邀邮箱。能完成登录才表示已被邀请。验证邮件由 Authing 发送；免费池额度要等实名认证，而实名认证还没有做，所以可能收不到验证码。本站不会假装已经登录。</p></details>
-        <details><summary>积分会因为刷新变多吗？</summary><p>不会。积分页面使用单独标出的示例账本，不根据草稿计分。</p></details>
+        <details open><summary data-copy="faq.03">现在能互相看见发布的课程吗？</summary><p data-copy="faq.04">不能。标成示例的内容是事先放在页面上的。你自己保存的草稿只在这台浏览器里。</p></details>
+        <details><summary data-copy="faq.05">学习笔记会自动公开吗？</summary><p data-copy="faq.06">不会。自动保存只写在本机。学习进度不进入评价。课程感受要你勾选同意后，才出现在本机评价预览。</p></details>
+        <details><summary data-copy="faq.07">可以自己注册吗？</summary><p data-copy="faq.08">不能。站主在 Authing 里关闭自行注册，并手动添加受邀邮箱。能完成登录才表示已被邀请。验证邮件由 Authing 发送；免费池额度要等实名认证，而实名认证还没有做，所以可能收不到验证码。本站不会假装已经登录。</p></details>
+        <details><summary data-copy="faq.09">积分会因为刷新变多吗？</summary><p data-copy="faq.10">不会。积分页面使用单独标出的示例账本，不根据草稿计分。</p></details>
       </div>
-      <p><a href="about.html#boundaries">回到关于里的社区边界</a></p>
+      <p><a href="about.html#boundaries" data-copy="faq.11">回到关于里的社区边界</a></p>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
-      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
-      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+      <p data-copy="site.footer">化山湖 · 技能学习空间。邀请登录和社区提交已经可以使用。学习笔记和本机草稿默认只留在这台设备上。示例课程的视频和外链还没有配置。</p>
+      <p class="device-note" data-copy="site.device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local data-copy="site.clear">清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
   <script src="assets/js/store.js"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/auth-config.js"></script>
+  <script src="assets/js/authing.js"></script>
+  <script src="assets/js/cloudbase-config.js"></script>
+  <script src="assets/js/cloudbase-api.js"></script>
+  <script src="assets/js/copy.js"></script>
 </body>
 </html>

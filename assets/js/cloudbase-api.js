@@ -37,6 +37,9 @@
   global.HuashanhuCloud = {
     configured: function () { return Boolean(base()); },
     listCourses: function () { return call("listCourses", {}, false); },
+    listCopy: function () { return call("listCopy", {}, false); },
+    saveCopy: function (copies) { return call("saveCopy", { copies: copies }, true); },
+    whoami: function () { return call("whoami", {}, true); },
     getCourse: function (id) { return call("getCourse", { id: id }, true); },
     publishCourse: function (course) { return call("publishCourse", { course: course }, true); },
     listPoints: function () { return call("listPoints", {}, true); },

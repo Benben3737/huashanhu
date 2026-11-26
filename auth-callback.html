@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <a class="skip" href="#content">跳到主要内容</a>
+  <a class="skip" href="#content" data-copy="site.skip">跳到主要内容</a>
   <div class="ink-field" aria-hidden="true">
     <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -27,26 +27,26 @@
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
         <img src="assets/img/mark.svg" alt="" width="42" height="42">
-        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+        <span><strong data-copy="site.brand">化山湖</strong><small data-copy="site.tagline">技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html">关于</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" data-copy="site.nav.home">首页</a><a href="community.html" data-copy="site.nav.community">社区课程作品</a><a href="notes.html" data-copy="site.nav.notes">学习笔记</a><a href="points.html" data-copy="site.nav.points">积分</a><a href="about.html" data-copy="site.nav.about">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html">邀请登录</a>
+        <a class="text-btn" href="invite.html" data-copy="site.nav.login">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <p class="proto-banner" data-copy="site.banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <header class="page-head">
-        <p class="kicker">账号</p>
-        <h1>登录回调</h1>
-        <p class="lede">授权码只交给 Authing 交换身份令牌。地址栏里的参数会马上清掉。</p>
+        <p class="kicker" data-copy="auth-callback.01">账号</p>
+        <h1 data-copy="auth-callback.02">登录回调</h1>
+        <p class="lede" data-copy="auth-callback.03">授权码只交给 Authing 交换身份令牌。地址栏里的参数会马上清掉。</p>
       </header>
       <p data-callback-status class="status-line" role="status" aria-live="polite">正在核对 Authing 的返回。</p>
-      <p><a href="invite.html">返回邀请登录</a></p>
+      <p><a href="invite.html" data-copy="auth-callback.04">返回邀请登录</a></p>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
+      <p data-copy="site.footer">化山湖 · 技能学习空间。邀请登录和社区提交已经可以使用。学习笔记和本机草稿默认只留在这台设备上。示例课程的视频和外链还没有配置。</p>
     </footer>
   </div>
   <script src="assets/js/auth-config.js"></script>
@@ -59,5 +59,8 @@
       document.querySelector("[data-callback-status]").textContent = "没有连上 Authing。没有登录，也没有建立会话。";
     });
   </script>
+  <script src="assets/js/cloudbase-config.js"></script>
+  <script src="assets/js/cloudbase-api.js"></script>
+  <script src="assets/js/copy.js"></script>
 </body>
 </html>

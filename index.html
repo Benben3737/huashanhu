@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <a class="skip" href="#content">跳到主要内容</a>
+  <a class="skip" href="#content" data-copy="site.skip">跳到主要内容</a>
   <div class="ink-field" aria-hidden="true">
     <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -28,25 +28,25 @@
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
         <img src="assets/img/mark.svg" alt="" width="42" height="42">
-        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+        <span><strong data-copy="site.brand">化山湖</strong><small data-copy="site.tagline">技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" aria-current="page">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html">关于</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" aria-current="page" data-copy="site.nav.home">首页</a><a href="community.html" data-copy="site.nav.community">社区课程作品</a><a href="notes.html" data-copy="site.nav.notes">学习笔记</a><a href="points.html" data-copy="site.nav.points">积分</a><a href="about.html" data-copy="site.nav.about">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html">邀请登录</a>
+        <a class="text-btn" href="invite.html" data-copy="site.nav.login">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <p class="proto-banner" data-copy="site.banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
     <main id="content" class="shell">
       <section class="hero">
         <div>
-          <p class="kicker">这是一个</p>
-          <h1>技能学习空间</h1>
-          <p class="lede">每个人都可以在这里分享自己的技能与心得，也可以学习别人的分享——把自己会的东西发出来，被更多人看见；看到感兴趣的内容，就去交流、去学习。在这里，人人既是分享者，也是学习者，互相交流，一起进步。</p>
+          <p class="kicker" data-copy="index.01">这是一个</p>
+          <h1 data-copy="index.02">技能学习空间</h1>
+          <p class="lede" data-copy="index.03">每个人都可以在这里分享自己的技能与心得，也可以学习别人的分享——把自己会的东西发出来，被更多人看见；看到感兴趣的内容，就去交流、去学习。在这里，人人既是分享者，也是学习者，互相交流，一起进步。</p>
           <div class="actions">
-            <a class="primary-btn" href="community.html">去社区课程作品</a>
-            <a class="ghost-btn" href="notes.html">写学习笔记</a>
-            <a class="ghost-btn" href="invite.html">邀请登录</a>
+            <a class="primary-btn" href="community.html" data-copy="index.04">去社区课程作品</a>
+            <a class="ghost-btn" href="notes.html" data-copy="index.05">写学习笔记</a>
+            <a class="ghost-btn" href="invite.html" data-copy="index.06">邀请登录</a>
           </div>
         </div>
         <aside class="hero-card">
@@ -54,41 +54,46 @@
             <path d="M8 70 L70 42 L112 62 L176 24 L230 58 L312 36" fill="none" stroke="#e6e2d8" stroke-width="1.4"/>
             <path class="ripple" d="M8 80c28 6 48-6 78 0s52 6 80 0 40-6 70 0 48 6 76 0" fill="none" stroke="#8ecfc8" stroke-width="1.2"/>
           </svg>
-          <p class="kicker">在这里</p>
-          <h2>分享，也学习。</h2>
+          <p class="kicker" data-copy="index.07">在这里</p>
+          <h2 data-copy="index.08">分享，也学习。</h2>
           <ol>
-            <li>把自己会的整理出来</li>
-            <li>看见别人的分享</li>
-            <li>记下自己的学习</li>
-            <li>等后台接通后再真正公开</li>
+            <li data-copy="index.09">把自己会的整理出来</li>
+            <li data-copy="index.10">看见别人的分享</li>
+            <li data-copy="index.11">记下自己的学习</li>
+            <li data-copy="index.12">等后台接通后再真正公开</li>
           </ol>
         </aside>
       </section>
       <section class="section" aria-labelledby="domains-title">
-        <h2 id="domains-title">可以先从这些领域看示例</h2>
-        <p class="lede">音乐、运动健身、旅游、烹饪只是示例分组，也接受其他领域。下面的卡片进入社区里的示例，不是正在发生的课堂。</p>
+        <h2 id="domains-title" data-copy="index.13">可以先从这些领域看示例</h2>
+        <p class="lede" data-copy="index.14">音乐、运动健身、旅游、烹饪只是示例分组，也接受其他领域。下面的卡片进入社区里的示例，不是正在发生的课堂。</p>
         <div class="domain-grid">
-          <a class="domain-card ink" href="community.html?domain=music"><p class="kicker">领域</p><h2>音乐</h2><p>示例分组。</p></a>
-          <a class="domain-card moss" href="community.html?domain=fitness"><p class="kicker">领域</p><h2>运动健身</h2><p>示例分组。</p></a>
-          <a class="domain-card sand" href="community.html?domain=travel"><p class="kicker">领域</p><h2>旅游</h2><p>示例分组。不编造具体行程。</p></a>
-          <a class="domain-card seal" href="community.html?domain=cooking"><p class="kicker">领域</p><h2>烹饪</h2><p>示例分组。不提供可下厨的配方。</p></a>
+          <a class="domain-card ink" href="community.html?domain=music"><p class="kicker" data-copy="index.15">领域</p><h2 data-copy="index.16">音乐</h2><p data-copy="index.17">示例分组。</p></a>
+          <a class="domain-card moss" href="community.html?domain=fitness"><p class="kicker" data-copy="index.18">领域</p><h2 data-copy="index.19">运动健身</h2><p data-copy="index.20">示例分组。</p></a>
+          <a class="domain-card sand" href="community.html?domain=travel"><p class="kicker" data-copy="index.21">领域</p><h2 data-copy="index.22">旅游</h2><p data-copy="index.23">示例分组。不编造具体行程。</p></a>
+          <a class="domain-card seal" href="community.html?domain=cooking"><p class="kicker" data-copy="index.24">领域</p><h2 data-copy="index.25">烹饪</h2><p data-copy="index.26">示例分组。不提供可下厨的配方。</p></a>
         </div>
       </section>
       <section class="section boundary" aria-label="现在能做什么">
-        <article><h3>整理在本机</h3><p>课程、心得和作品可以先写在这台浏览器里。保存不等于已经分享给别人。</p></article>
-        <article><h3>笔记默认私有</h3><p>学习进度不会公开。只有你主动勾选，一段课程感受才会进入本机评价预览。</p></article>
-        <article><h3>打开课程需要邀请</h3><p>首页、关于和社区课程的目录可以先看。打开目录里的一门课程或一节章节，才需要完成邀请登录。站主在 Authing 添加邮箱后才能登录，不能自行注册。</p></article>
+        <article><h3 data-copy="index.27">整理在本机</h3><p data-copy="index.28">课程、心得和作品可以先写在这台浏览器里。保存不等于已经分享给别人。</p></article>
+        <article><h3 data-copy="index.29">笔记默认私有</h3><p data-copy="index.30">学习进度不会公开。只有你主动勾选，一段课程感受才会进入本机评价预览。</p></article>
+        <article><h3 data-copy="index.31">打开课程需要邀请</h3><p data-copy="index.32">首页、关于和社区课程的目录可以先看。打开目录里的一门课程或一节章节，才需要完成邀请登录。站主在 Authing 添加邮箱后才能登录，不能自行注册。</p></article>
       </section>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
-      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
-      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+      <p data-copy="site.footer">化山湖 · 技能学习空间。邀请登录和社区提交已经可以使用。学习笔记和本机草稿默认只留在这台设备上。示例课程的视频和外链还没有配置。</p>
+      <p class="device-note" data-copy="site.device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local data-copy="site.clear">清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
   <script src="assets/js/store.js"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/auth-config.js"></script>
+  <script src="assets/js/authing.js"></script>
+  <script src="assets/js/cloudbase-config.js"></script>
+  <script src="assets/js/cloudbase-api.js"></script>
+  <script src="assets/js/copy.js"></script>
 </body>
 </html>

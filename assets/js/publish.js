@@ -12,13 +12,22 @@
     status.textContent = text;
   }
 
-  if (session) {
-    gate.textContent = "已登录。提交会写入 CloudBase，作者是这次登录的身份，不会上传本机草稿。只有类型为课程时，服务器才记 1 分。";
-    form.hidden = false;
-  } else {
-    gate.textContent = "请先完成邀请登录。未登录不会把内容写入 CloudBase。";
-    form.hidden = true;
+  const guestCopy = "请先完成邀请登录。未登录不会把内容写入 CloudBase。";
+  const memberCopy = "已登录。提交会写入 CloudBase，作者是这次登录的身份，不会上传本机草稿。只有类型为课程时，服务器才记 1 分。";
+  function showGate() {
+    const signedIn = window.HuashanhuAuth && window.HuashanhuAuth.session();
+    if (signedIn) {
+      gate.setAttribute("data-copy", "community.publish.member");
+      gate.textContent = window.HuashanhuCopy ? window.HuashanhuCopy.text("community.publish.member", memberCopy) : memberCopy;
+      form.hidden = false;
+    } else {
+      gate.setAttribute("data-copy", "community.publish.guest");
+      gate.textContent = window.HuashanhuCopy ? window.HuashanhuCopy.text("community.publish.guest", guestCopy) : guestCopy;
+      form.hidden = true;
+    }
   }
+  document.addEventListener("huashanhu-copy", showGate);
+  showGate();
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();

@@ -230,6 +230,66 @@ async function authTicket(event) {
   return { ok: true, ticket: ticket, authorUid: who.authorUid, role: who.role, permissions: who.permissions };
 }
 
+function plainCopy(value) {
+  if (typeof value !== "string") return null;
+  return value.replace(/\u0000/g, "").slice(0, 4000);
+}
+
+function copyKey(value) {
+  return /^[a-z0-9][a-z0-9._-]{0,79}$/.test(value);
+}
+
+async function listCopy() {
+  const db = getApp().database();
+  const copies = {};
+  let skip = 0;
+  for (let page = 0; page < 20; page += 1) {
+    const result = await db.collection("site_copy").skip(skip).limit(100).get();
+    const rows = result.data || [];
+    rows.forEach((doc) => {
+      if (typeof doc.key === "string" && typeof doc.text === "string") copies[doc.key] = doc.text;
+    });
+    if (rows.length < 100) break;
+    skip += rows.length;
+  }
+  return { ok: true, copies: copies };
+}
+
+async function saveCopy(event) {
+  const payload = await verifyIdToken(bearer(event));
+  const who = actor(payload);
+  if (who.role !== "founder") {
+    return { ok: false, code: "forbidden", message: "只有创始人可以保存网站文本。" };
+  }
+  const copies = event.body.copies;
+  if (!copies || typeof copies !== "object" || Array.isArray(copies)) {
+    return { ok: false, code: "bad_request", message: "没有可保存的文本。" };
+  }
+  const keys = Object.keys(copies);
+  if (!keys.length || keys.length > 80) return { ok: false, code: "bad_request", message: "这次保存的条目数量不合适。没有写入。" };
+  const db = getApp().database();
+  const saved = [];
+  for (const key of keys) {
+    if (!copyKey(key)) return { ok: false, code: "bad_request", message: "文本编号不合法。没有写入。" };
+    const text = plainCopy(copies[key]);
+    if (text === null) return { ok: false, code: "bad_request", message: "网站文本只能是纯文字。没有写入。" };
+    const existing = await db.collection("site_copy").where({ key: key }).limit(1).get();
+    const row = (existing.data || [])[0];
+    const id = row && (row._id || row.id);
+    const record = { key: key, text: text, updatedAt: new Date().toISOString(), updatedBy: who.authorUid };
+    if (id) await db.collection("site_copy").doc(id).update(record);
+    else await db.collection("site_copy").add(record);
+    saved.push(key);
+  }
+  return { ok: true, saved: saved };
+}
+
+async function whoami(event) {
+  const payload = await verifyIdToken(bearer(event));
+  const who = actor(payload);
+  return { ok: true, role: who.role, permissions: who.permissions };
+}
+
 async function listPoints(event) {
   const payload = await verifyIdToken(bearer(event));
   const who = actor(payload);
@@ -257,8 +317,11 @@ exports.main = async (event) => {
     else if (action === "publishCourse") result = await publishCourse(event);
     else if (action === "authTicket") result = await authTicket(event);
     else if (action === "listPoints") result = await listPoints(event);
+    else if (action === "listCopy") result = await listCopy();
+    else if (action === "saveCopy") result = await saveCopy(event);
+    else if (action === "whoami") result = await whoami(event);
     else result = { ok: false, code: "unknown_action", message: "没有这个操作。" };
-    const status = result.ok ? 200 : result.code === "not_found" ? 404 : 400;
+    const status = result.ok ? 200 : result.code === "not_found" ? 404 : result.code === "forbidden" ? 403 : 400;
     return http(status, result, origin);
   } catch (error) {
     const code = error.message === "unverified" ? "unverified" : "unauthorized";
