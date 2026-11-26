@@ -1,0 +1,18 @@
+window.HUASHANHU_PAGES = [
+  { type: "课程", title: "四拍听记页样例", href: "course-rhythm.html", summary: "示例课程。演示音乐页面如何放示意图。", text: "音乐 节奏 四拍听记 示例课程" },
+  { type: "课程", title: "换气页样例", href: "course-swim.html", summary: "示例课程。游泳这门课还没有章节。", text: "运动健身 游泳 换气 示例课程" },
+  { type: "课程", title: "螳螂拳入门", href: "course-tanglang.html", summary: "示例课程。两节课文，不替代面授。", text: "运动健身 螳螂拳 钩手 示例课程" },
+  { type: "课程", title: "半日步行页样例", href: "course-walk.html", summary: "示例课程。没有具体城市。", text: "旅游 步行 示例课程" },
+  { type: "课程", title: "备菜顺序页样例", href: "course-cook.html", summary: "示例课程。只演示顺序栏，不是配方。", text: "烹饪 备菜 示例课程" },
+  { type: "课程", title: "射箭页样例", href: "course-archery.html", summary: "示例课程。靶纸只是占位图。", text: "运动健身 射箭 示例课程" },
+  { type: "课程", title: "行前检查页样例", href: "course-hike.html", summary: "示例课程。不提供路线或天气。", text: "运动健身 爬山 徒步 示例课程" },
+  { type: "章节", title: "一小节格子如何被画出来", href: "lesson-rhythm-01.html", summary: "示例章节。四个空格子，不是乐谱。", text: "音乐 节奏 格子 章节" },
+  { type: "章节", title: "一个名称在页面上的位置", href: "lesson-tanglang-01.html", summary: "示例章节。用钩手这个名称演示标题和图。", text: "螳螂拳 钩手 章节" },
+  { type: "章节", title: "笔记、短视频和网盘各放哪里", href: "lesson-tanglang-02.html", summary: "示例章节。外链槽仍是未配置。", text: "螳螂拳 外链 章节 尚未配置" },
+  { type: "章节", title: "靶纸在课文里放哪里", href: "lesson-archery-01.html", summary: "示例章节。同心圆只说明配图区域。", text: "射箭 靶纸 章节" },
+  { type: "章节", title: "检查表的空栏", href: "lesson-hike-01.html", summary: "示例章节。不填写真实行程。", text: "爬山 徒步 检查 章节" },
+  { type: "章节", title: "行程页还没有地名", href: "lesson-walk-01.html", summary: "示例章节。起点和停留都待补充。", text: "旅游 步行 地名 章节" },
+  { type: "章节", title: "顺序栏，不是配方", href: "lesson-cook-01.html", summary: "示例章节。不能照着做出一道菜。", text: "烹饪 备菜 章节" },
+  { type: "示例心得", title: "一小节格子如何被画出来", href: "community.html#example-rhythm", summary: "社区里的示例心得，不是私人笔记。", text: "音乐 心得 节奏 示例" },
+  { type: "示例作品", title: "山湖标志", href: "community.html#example-mark", summary: "社区里的示例作品，不是学员作业。", text: "作品 标志 示例" },
+];

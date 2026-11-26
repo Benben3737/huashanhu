@@ -135,6 +135,37 @@ button, a, .chip, input { transition: color 180ms ease, background-color 180ms e
 }
 .ghost-btn:hover, .text-btn:hover, .icon-btn:hover { border-color: var(--lake); color: var(--lake-deep); }
 .header-actions { display: flex; gap: 8px; align-items: center; }
+.header-search { margin: 0; }
+.header-search input {
+  width: 180px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg-high);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.danger-btn {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid #8a4a4a;
+  color: #f0b4b4;
+  padding: 10px 16px;
+}
+.file-btn { display: inline-flex; align-items: center; }
+.file-btn input { display: none; }
 .proto-banner, .student-banner {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto 8px;
@@ -314,6 +345,8 @@ details.fold .fold-body, .faq details p { padding: 0 14px 14px; margin: 0; color
     grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: center;
   }
+  .header-search { grid-column: 1 / -1; }
+  .header-search input { width: 100%; }
   .brand { margin-right: 0; min-width: 0; }
   .brand strong { font-size: 18px; white-space: nowrap; }
   .brand img { width: 36px; height: 36px; }

@@ -138,4 +138,27 @@
 
   enhanceSlots();
   window.HuashanhuConfirm = confirmAction;
+
+  const siteSearch = document.querySelector("#site-search");
+  if (siteSearch) {
+    const here = location.pathname.endsWith("search.html");
+    if (here) {
+      const current = new URLSearchParams(location.search).get("q") || "";
+      if (current) siteSearch.value = current;
+    }
+    let timer = 0;
+    siteSearch.addEventListener("input", () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        const q = siteSearch.value.trim();
+        const url = "search.html" + (q ? "?q=" + encodeURIComponent(q) : "");
+        if (location.pathname.endsWith("search.html")) {
+          history.replaceState({}, "", url);
+          document.dispatchEvent(new Event("huashanhu-search"));
+        } else if (q) {
+          location.href = url;
+        }
+      }, 180);
+    });
+  }
 })();

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="导出或导入这台浏览器里的化山湖草稿和笔记，并下载完整静态站点。">
+  <title>备份与发布 · 化山湖</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#content">跳到主要内容</a>
+  <div class="ink-field" aria-hidden="true">
+    <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="mistA" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8ecfc8" stop-opacity="0.18"/>
+          <stop offset="72%" stop-color="#8ecfc8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse class="mist mist-a" cx="180" cy="140" rx="320" ry="140" fill="url(#mistA)"/>
+      <ellipse class="mist mist-b" cx="1220" cy="220" rx="360" ry="150" fill="url(#mistA)"/>
+    </svg>
+  </div>
+  <div data-inert-root>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
+        <img src="assets/img/mark.svg" alt="" width="42" height="42">
+        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="points.html">积分</a><a href="about.html">关于</a></nav>
+      <form class="header-search" action="search.html" method="get" role="search"><label class="sr-only" for="site-search">搜索本站</label><input id="site-search" name="q" type="search" placeholder="试试搜游泳、螳螂拳" autocomplete="off" enterkeyhint="search"></form>
+      <div class="header-actions">
+        <a class="text-btn" href="invite.html">邀请登录</a>
+      </div>
+    </header>
+    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+    <main id="content" class="shell" data-backup>
+      <header class="page-head">
+        <p class="kicker">本机</p>
+        <h1>备份与发布</h1>
+        <p class="lede">换设备或准备放到 GitHub 之前，先把这台浏览器里的记录导出。下载到的文件只在你的电脑上，不会自动上传，也不会同步到另一台设备。</p>
+      </header>
+      <section class="quiet-card">
+        <h2>JSON 备份</h2>
+        <p>导出这台设备实际保存的社区草稿、本机预览标记、学习笔记和评价同意。文件带格式版本和生成时间。不含密钥、密码或身份令牌。外链若写进了草稿正文，也会一起变长。</p>
+        <div class="actions">
+          <button class="primary-btn" type="button" data-export>导出 JSON 备份</button>
+          <label class="ghost-btn file-btn">导入备份
+            <input data-import type="file" accept="application/json,.json">
+          </label>
+          <button class="danger-btn" type="button" data-reset-records>恢复初始框架（清空我的记录）</button>
+        </div>
+      </section>
+      <section class="quiet-card">
+        <h2>下载本站文件</h2>
+        <p>下载的是包含页面、样式、脚本和图标的 zip，可以直接作为 GitHub Pages 的站点根目录。它不是把多页站压成一个 index.html。</p>
+        <label class="check-row">
+          <input data-include-private type="checkbox">
+          <span>同时放入我的私人草稿和笔记。它们会放在 private/ 目录，和示例内容分开。默认不包含。</span>
+        </label>
+        <div class="actions">
+          <button class="primary-btn" type="button" data-download-site>下载完整静态站点（zip）</button>
+        </div>
+      </section>
+      <p data-backup-status class="status-line" role="status" aria-live="polite">还没有导出或导入。</p>
+    </main>
+    <footer class="site-footer">
+      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
+      <p><a href="backup.html">备份与发布</a></p>
+      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+    </footer>
+  </div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/site-files.js"></script>
+  <script src="assets/js/links.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/backup.js"></script>
+</body>
+</html>

@@ -114,7 +114,7 @@
         list.append(
           h(
             "li",
-            { class: "draft-card" },
+            { class: "draft-card", id: "note-" + note.id },
             h("p", { class: "badge", text: "本机私有" }),
             h("h3", { text: note.course || "未填写课程" }),
             h("p", { class: "meta", text: (note.sharer || "未填写分享者") + " · " + domainLabel(note.domain) }),
@@ -141,10 +141,10 @@
         }
       });
       reviews.append(
-        h(
-          "li",
-          { class: "draft-card" },
-          h("p", { class: "badge", text: "评价预览 · 仅本机 · 不是真实发布" }),
+          h(
+            "li",
+            { class: "draft-card", id: "review-" + note.id },
+            h("p", { class: "badge", text: "评价预览 · 仅本机 · 不是真实发布" }),
           h("h3", { text: note.course || "未填写课程" }),
           h("p", { class: "meta", text: "分享者：" + (note.sharer || "未填写") }),
           h("p", { class: "pre", text: note.feeling }),
@@ -152,6 +152,12 @@
         ),
       );
     });
+    revealLocalHash();
+  }
+
+  function revealLocalHash() {
+    if (!/^#(note|review)-[A-Za-z0-9_-]+$/.test(location.hash)) return;
+    document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: "center" });
   }
 
   function persist(manual) {
