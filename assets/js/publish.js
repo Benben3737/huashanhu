@@ -12,7 +12,7 @@
     status.textContent = text;
   }
 
-  if (session && session.email_verified) {
+  if (session) {
     gate.textContent = "已登录。提交会写入 CloudBase，作者是这次登录的身份，不会上传本机草稿。只有类型为课程时，服务器才记 1 分。";
     form.hidden = false;
   } else {

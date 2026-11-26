@@ -5,5 +5,5 @@
 window.HUASHANHU_CLOUDBASE = {
   envId: "huashanhu-d8gc6g7x681612ecd",
   region: "ap-shanghai",
-  functionBase: "",
+  functionBase: "https://huashanhu-d8gc6g7x681612ecd-1542175561.ap-shanghai.app.tcloudbase.com/huashanhu-api",
 };

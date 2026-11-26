@@ -39,10 +39,11 @@ Authing CORS：
    - `AUTH_ISSUER`
    - `AUTH_CLIENT_ID`
    - `CUSTOM_LOGIN_CREDENTIALS`（私钥 JSON 的整段文本）
+   - `FOUNDER_USER_IDS`（逗号分隔的 Authing 用户 ID，不是邮箱）。云函数优先读这个变量。令牌里的 `external_id` 或 `externalId` 等于 `founder` 时也视为创始人。创始人发布时，没有昵称就显示「化山湖创始人」。
 3. HTTP 网关新建路由，关联该云函数，路径建议 `/huashanhu-api`，允许 `POST` 和 `OPTIONS`。
-4. 把控制台显示的完整 HTTPS 地址填进 `assets/js/cloudbase-config.js` 的 `functionBase`。留空时页面会说明还没接通，不会假装写入成功。
+4. 公开的云函数地址已经写在 `assets/js/cloudbase-config.js` 的 `functionBase`：`https://huashanhu-d8gc6g7x681612ecd-1542175561.ap-shanghai.app.tcloudbase.com/huashanhu-api`。这是 HTTPS 入口，不是密钥。如果网关地址以后变了，只改这一处。
 5. 文档数据库建立三个集合：`course_catalog`、`course_bodies`、`points_ledger`。建议都设为「无权限」，只让这个云函数用管理身份读写。目录接口只返回标题、简介、领域、类型和显示名，不返回邮箱和章节正文。
 
 ## 怎样在预览站核对
 
-部署并填好 `functionBase` 之后，打开 `https://huashanhu-d8gc6g7x681612ecd-1542175561.tcloudbaseapp.com/community.html`。未登录可以看见目录和「提交到社区」说明。用已在 Authing 创建的邮箱完成邀请登录，再提交一门课程。返回编号后，未登录点击该课程应看到「需要邀请」，登录后才看到正文。只有类型选「课程」时账本加 1 分。
+打开 `https://huashanhu-d8gc6g7x681612ecd-1542175561.tcloudbaseapp.com/community.html`。未登录可以看见目录和「提交到社区」说明。用已在 Authing 创建的账号完成邀请登录后再提交。免费版管理员创建的账号可以没有 `email_verified`，只要令牌签名、签发方、受众和有效期通过，这次登录仍然成立。返回编号后，未登录点击该课程应看到「需要邀请」，登录后才看到正文。只有类型选「课程」时账本加 1 分。`getCourse`、`publishCourse`、`authTicket` 和 `listPoints` 会返回 `role` 与 `permissions`。

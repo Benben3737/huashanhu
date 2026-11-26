@@ -75,9 +75,34 @@ async function verifyIdToken(token) {
   const audience = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
   if (payload.iss !== ISSUER || !audience.includes(CLIENT_ID)) throw new Error("claim");
   if (!payload.exp || payload.exp * 1000 <= Date.now()) throw new Error("exp");
-  if (payload.email_verified !== true) throw new Error("unverified");
+  // Invite-only admin-created accounts on the Authing free plan cannot be marked
+  // email_verified without 实名, so a valid signature, issuer, audience, expiry,
+  // and sub are enough. Do not treat this as a public signup check.
   if (!payload.sub) throw new Error("sub");
   return payload;
+}
+
+const FOUNDER_SUBS = new Set(
+  String(process.env.FOUNDER_USER_IDS || "6b0812111816a7d37dca6950")
+    .split(",")
+    .map((id) => id.trim())
+    .filter(Boolean)
+);
+
+function isFounder(payload) {
+  const sub = String(payload.sub || "");
+  if (FOUNDER_SUBS.has(sub)) return true;
+  const external = String(payload.external_id || payload.externalId || "");
+  return external === "founder";
+}
+
+function actor(payload) {
+  const founder = isFounder(payload);
+  return {
+    authorUid: tcbUid(payload.sub),
+    role: founder ? "founder" : "member",
+    permissions: founder ? "all" : "standard",
+  };
 }
 
 function bearer(event) {
@@ -107,6 +132,7 @@ async function listCourses() {
 
 async function getCourse(event) {
   const payload = await verifyIdToken(bearer(event));
+  const who = actor(payload);
   const id = text(event.body.id, 80);
   if (!id) return { ok: false, code: "bad_request", message: "缺少课程编号。" };
   const db = getApp().database();
@@ -122,7 +148,9 @@ async function getCourse(event) {
       materials: full.materials || "",
       template: full.template || "",
     }),
-    reader: tcbUid(payload.sub),
+    reader: who.authorUid,
+    role: who.role,
+    permissions: who.permissions,
   };
 }
 
@@ -145,10 +173,11 @@ function cleanCourse(input) {
 
 async function publishCourse(event) {
   const payload = await verifyIdToken(bearer(event));
+  const who = actor(payload);
   const course = cleanCourse(event.body.course || {});
   if (!course) return { ok: false, code: "bad_request", message: "课程内容不完整，没有写入。" };
-  const uid = tcbUid(payload.sub);
-  const authorName = text(payload.nickname || payload.name || "", 40) || "受邀成员";
+  const uid = who.authorUid;
+  const authorName = text(payload.nickname || payload.name || "", 40) || (who.role === "founder" ? "化山湖创始人" : "受邀成员");
   const db = getApp().database();
   const createdAt = new Date().toISOString();
   const added = await db.collection("course_catalog").add({
@@ -188,27 +217,27 @@ async function publishCourse(event) {
   if (credentials() && getApp().auth && typeof getApp().auth().createTicket === "function") {
     ticket = await Promise.resolve(getApp().auth().createTicket(uid));
   }
-  return { ok: true, id: id, pointsAwarded: pointsAwarded, ticket: ticket, authorUid: uid };
+  return { ok: true, id: id, pointsAwarded: pointsAwarded, ticket: ticket, authorUid: uid, role: who.role, permissions: who.permissions };
 }
 
 async function authTicket(event) {
   const payload = await verifyIdToken(bearer(event));
+  const who = actor(payload);
   if (!credentials()) {
     return { ok: false, code: "not_configured", message: "云函数还没有自定义登录私钥。没有签发 CloudBase 票据。" };
   }
-  const uid = tcbUid(payload.sub);
-  const ticket = await Promise.resolve(getApp().auth().createTicket(uid));
-  return { ok: true, ticket: ticket, authorUid: uid };
+  const ticket = await Promise.resolve(getApp().auth().createTicket(who.authorUid));
+  return { ok: true, ticket: ticket, authorUid: who.authorUid, role: who.role, permissions: who.permissions };
 }
 
 async function listPoints(event) {
   const payload = await verifyIdToken(bearer(event));
-  const uid = tcbUid(payload.sub);
+  const who = actor(payload);
   const db = getApp().database();
-  const result = await db.collection("points_ledger").where({ authorUid: uid }).limit(100).get();
+  const result = await db.collection("points_ledger").where({ authorUid: who.authorUid }).limit(100).get();
   const rows = result.data || [];
   const total = rows.reduce((sum, row) => sum + (Number(row.delta) || 0), 0);
-  return { ok: true, total: total, entries: rows.map((row) => ({ courseId: row.courseId, delta: row.delta, reason: row.reason, createdAt: row.createdAt })) };
+  return { ok: true, total: total, entries: rows.map((row) => ({ courseId: row.courseId, delta: row.delta, reason: row.reason, createdAt: row.createdAt })), role: who.role, permissions: who.permissions };
 }
 
 exports.main = async (event) => {

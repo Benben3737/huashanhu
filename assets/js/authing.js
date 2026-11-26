@@ -46,7 +46,6 @@
         sessionStorage.removeItem(SESSION_KEY);
         return null;
       }
-      if (session.email_verified !== true) return null;
       return session;
     } catch (error) {
       sessionStorage.removeItem(SESSION_KEY);
@@ -165,23 +164,20 @@
     } catch (error) {
       return { ok: false, message: "身份令牌没有通过校验。没有建立会话。" };
     }
-    if (payload.email_verified !== true) {
-      return { ok: false, message: "Authing 还没有把这个邮箱标成已验证。本站不把这次访问当作已登录。" };
-    }
     const session = {
       iss: payload.iss,
       aud: cfg.clientId,
       sub: payload.sub,
       email: payload.email || "",
-      name: payload.name || payload.nickname || "",
-      email_verified: true,
+      name: payload.nickname || payload.name || "",
+      email_verified: payload.email_verified === true,
       exp: payload.exp,
       idToken: data.id_token,
     };
     sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
     return {
       ok: true,
-      message: "Authing 已确认这个邮箱。本次浏览器标签可以视为已登录。本机草稿没有上传。积分发放和课程正文要等 CloudBase 云函数接通后才写入服务器。",
+      message: "邀请登录已完成。本次浏览器标签可以视为已登录。本机草稿没有上传。",
     };
   }
 
