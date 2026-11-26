@@ -216,7 +216,7 @@
         list.append(
           h(
             "li",
-            { class: "draft-card" },
+            { class: "draft-card", id: "draft-" + draft.id },
             h("p", { class: "badge", text: spec.label + (draft.localPreview ? " · 仅本机预览 · 待上线" : " · 本机草稿") }),
             h("h3", { text: draft.title || "未命名草稿" }),
             h("p", { class: "meta", text: domainLabel(draft.domain) + " · " + draft.chapters.length + " 节 · 其他人看不到 · 不加积分" }),
@@ -224,6 +224,12 @@
           ),
         );
       });
+    revealLocalHash();
+  }
+
+  function revealLocalHash() {
+    if (!/^#draft-[A-Za-z0-9_-]+$/.test(location.hash)) return;
+    document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: "center" });
   }
 
   function saveCurrent() {
