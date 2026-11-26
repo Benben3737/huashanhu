@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <a class="skip" href="#content">跳到主要内容</a>
+  <a class="skip" href="#content" data-copy="site.skip">跳到主要内容</a>
   <div class="ink-field" aria-hidden="true">
     <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -28,109 +28,147 @@
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
         <img src="assets/img/mark.svg" alt="" width="42" height="42">
-        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+        <span><strong data-copy="site.brand">化山湖</strong><small data-copy="site.tagline">技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html" aria-current="page">社区课程作品</a><a href="notes.html">学习笔记</a><a href="about.html">关于</a><a href="points.html">积分</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" data-copy="site.nav.home">首页</a><a href="community.html" aria-current="page" data-copy="site.nav.community">社区课程作品</a><a href="notes.html" data-copy="site.nav.notes">学习笔记</a><a href="points.html" data-copy="site.nav.points">积分</a><a href="about.html" data-copy="site.nav.about">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html">邀请登录</a>
+        <a class="text-btn" href="invite.html" data-copy="site.nav.login">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
-    <main id="content" class="shell">
+    <p class="proto-banner" data-copy="site.banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+        <main id="content" class="shell">
       <header class="page-head">
-        <p class="kicker">社区</p>
-        <h1>社区课程作品</h1>
-        <p class="lede">这里准备成为大家分享课程、心得和作品的地方，也用来把自己的技能理清楚。现在能看的公开材料都是示例；你新写的内容先留在这台设备上。</p>
+        <p class="kicker" data-copy="community.01">社区</p>
+        <h1 data-copy="community.02">社区课程作品</h1>
+        <p class="lede" data-copy="community.03">这里准备成为大家分享课程、心得和作品的地方，也用来把自己的技能理清楚。目录里的示例可以先看。打开一门课程前需要邀请登录。提交到 CloudBase 也要先登录。</p>
       </header>
+      <section class="quiet-card" id="submit" data-publish>
+        <h2 data-copy="community.04">提交到社区</h2>
+        <p data-publish-gate data-copy="community.publish.guest">请先完成邀请登录。未登录不会把内容写入 CloudBase。</p>
+        <form class="composer" data-publish-form hidden>
+          <label><span data-copy="community.05">标题
+            </span><input name="title" type="text" maxlength="80" required autocomplete="off">
+          </label>
+          <label><span data-copy="community.06">类型
+            </span><select name="kind">
+              <option value="course">课程</option>
+              <option value="insight">心得</option>
+              <option value="work">作品</option>
+            </select>
+          </label>
+          <label><span data-copy="community.07">领域
+            </span><select name="domain">
+              <option value="music">音乐</option>
+              <option value="fitness">运动健身</option>
+              <option value="travel">旅游</option>
+              <option value="cooking">烹饪</option>
+              <option value="other" selected>其他</option>
+            </select>
+          </label>
+          <label><span data-copy="community.08">简介
+            </span><textarea name="summary" rows="3" maxlength="500"></textarea>
+          </label>
+          <label><span data-copy="community.09">第一节标题
+            </span><input name="heading" type="text" maxlength="80" required autocomplete="off">
+          </label>
+          <label><span data-copy="community.10">第一节正文
+            </span><textarea name="body" rows="5" maxlength="8000" required></textarea>
+          </label>
+          <button class="primary-btn" type="submit" data-copy="community.11">提交到 CloudBase</button>
+        </form>
+        <p data-publish-status class="status-line" role="status" aria-live="polite"></p>
+        <h3 data-copy="community.12">已发布到 CloudBase 的目录</h3>
+        <div class="card-grid" data-live-courses></div>
+      </section>
       <div data-community>
         <section aria-labelledby="discover-title">
-          <h2 id="discover-title">示例，供查看</h2>
-          <p>作者、评价和这些条目都标成示例。页面不显示活跃人数，也不把示例说成真实动态。</p>
+          <h2 id="discover-title" data-copy="community.13">示例，供查看</h2>
+          <p data-copy="community.14">作者、评价和这些条目都标成示例。页面不显示活跃人数，也不把示例说成真实动态。目录可以先看；打开其中一门课程或一节章节时，需要完成邀请登录。</p>
           <form class="filters" data-example-form action="community.html" method="get" role="search">
             <div class="search-row">
-              <label>搜索示例
-                <input data-example-q id="q" name="q" type="search" placeholder="试试：游泳、钩手、备菜">
+              <label><span data-copy="community.15">搜索示例
+                </span><input data-example-q id="q" name="q" type="search" placeholder="试试：游泳、钩手、备菜">
               </label>
             </div>
             <div class="chip-row" role="group" aria-label="领域">
-              <button class="chip" type="button" data-set-domain="" aria-pressed="true">全部领域</button>
-              <button class="chip" type="button" data-set-domain="music">音乐</button>
-              <button class="chip" type="button" data-set-domain="fitness">运动健身</button>
-              <button class="chip" type="button" data-set-domain="travel">旅游</button>
-              <button class="chip" type="button" data-set-domain="cooking">烹饪</button>
-              <button class="chip" type="button" data-set-domain="other">其他</button>
+              <button class="chip" type="button" data-set-domain="" aria-pressed="true" data-copy="community.16">全部领域</button>
+              <button class="chip" type="button" data-set-domain="music" data-copy="community.17">音乐</button>
+              <button class="chip" type="button" data-set-domain="fitness" data-copy="community.18">运动健身</button>
+              <button class="chip" type="button" data-set-domain="travel" data-copy="community.19">旅游</button>
+              <button class="chip" type="button" data-set-domain="cooking" data-copy="community.20">烹饪</button>
+              <button class="chip" type="button" data-set-domain="other" data-copy="community.21">其他</button>
             </div>
             <div class="chip-row" role="group" aria-label="类型">
-              <button class="chip" type="button" data-set-kind="" aria-pressed="true">全部</button>
-              <button class="chip" type="button" data-set-kind="course">课程</button>
-              <button class="chip" type="button" data-set-kind="insight">心得</button>
-              <button class="chip" type="button" data-set-kind="work">作品</button>
+              <button class="chip" type="button" data-set-kind="" aria-pressed="true" data-copy="community.22">全部</button>
+              <button class="chip" type="button" data-set-kind="course" data-copy="community.23">课程</button>
+              <button class="chip" type="button" data-set-kind="insight" data-copy="community.24">心得</button>
+              <button class="chip" type="button" data-set-kind="work" data-copy="community.25">作品</button>
             </div>
             <p data-example-count aria-live="polite">正在显示示例。</p>
           </form>
           <div class="card-grid" id="works">
             <article class="course-card" data-example data-kind="course" data-domain="music" data-search="音乐 课程 四拍听记 示例">
-              <p class="badge">示例课程</p>
-              <h3><a href="course-rhythm.html">四拍听记页样例</a></h3>
-              <p>演示音乐页面如何放示意图。不是已开出的听写课。</p>
-              <p class="meta">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+              <p class="badge" data-copy="community.26">示例课程</p>
+              <h3><a href="course-rhythm.html" data-copy="community.27">四拍听记页样例</a></h3>
+              <p data-copy="community.28">演示音乐页面如何放示意图。不是已开出的听写课。</p>
+              <p class="meta" data-copy="community.29">示例作者 · 示例评价：占位句子，不是用户留言。</p>
             </article>
             <article class="course-card" data-example data-kind="course" data-domain="fitness" data-search="运动健身 游泳 换气 课程 示例">
-              <p class="badge">示例课程</p>
-              <h3><a href="course-swim.html">换气页样例</a></h3>
-              <p>这门示例课还没有章节，用来表示尚未编写。</p>
-              <p class="meta">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+              <p class="badge" data-copy="community.30">示例课程</p>
+              <h3><a href="course-swim.html" data-copy="community.31">换气页样例</a></h3>
+              <p data-copy="community.32">这门示例课还没有章节，用来表示尚未编写。</p>
+              <p class="meta" data-copy="community.33">示例作者 · 示例评价：占位句子，不是用户留言。</p>
             </article>
             <article class="course-card" data-example data-kind="course" data-domain="fitness" data-search="运动健身 螳螂拳 钩手 课程 示例">
-              <p class="badge">示例课程</p>
-              <h3><a href="course-tanglang.html">螳螂拳入门</a></h3>
-              <p>两节示例课文，不替代面授，也不提供训练计划。</p>
-              <p class="meta">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+              <p class="badge" data-copy="community.34">示例课程</p>
+              <h3><a href="course-tanglang.html" data-copy="community.35">螳螂拳入门</a></h3>
+              <p data-copy="community.36">两节示例课文，不替代面授，也不提供训练计划。</p>
+              <p class="meta" data-copy="community.37">示例作者 · 示例评价：占位句子，不是用户留言。</p>
             </article>
             <article class="course-card" data-example data-kind="course" data-domain="travel" data-search="旅游 步行 课程 示例">
-              <p class="badge">示例课程</p>
-              <h3><a href="course-walk.html">半日步行页样例</a></h3>
-              <p>没有具体城市，避免编造行程。</p>
-              <p class="meta">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+              <p class="badge" data-copy="community.38">示例课程</p>
+              <h3><a href="course-walk.html" data-copy="community.39">半日步行页样例</a></h3>
+              <p data-copy="community.40">没有具体城市，避免编造行程。</p>
+              <p class="meta" data-copy="community.41">示例作者 · 示例评价：占位句子，不是用户留言。</p>
             </article>
             <article class="course-card" data-example data-kind="course" data-domain="cooking" data-search="烹饪 备菜 课程 示例">
-              <p class="badge">示例课程</p>
-              <h3><a href="course-cook.html">备菜顺序页样例</a></h3>
-              <p>只演示顺序栏，不是可以照做的配方。</p>
-              <p class="meta">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+              <p class="badge" data-copy="community.42">示例课程</p>
+              <h3><a href="course-cook.html" data-copy="community.43">备菜顺序页样例</a></h3>
+              <p data-copy="community.44">只演示顺序栏，不是可以照做的配方。</p>
+              <p class="meta" data-copy="community.45">示例作者 · 示例评价：占位句子，不是用户留言。</p>
             </article>
             <article class="course-card" data-example data-kind="insight" data-domain="music" data-search="音乐 心得 节奏 示例">
-              <p class="badge">示例心得</p>
-              <h3><a href="lesson-rhythm-01.html">一小节格子如何被画出来</a></h3>
-              <p>示例心得，不是某位学习者的私人笔记。</p>
-              <p class="meta">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+              <p class="badge" data-copy="community.46">示例心得</p>
+              <h3><a href="lesson-rhythm-01.html" data-copy="community.47">一小节格子如何被画出来</a></h3>
+              <p data-copy="community.48">示例心得，不是某位学习者的私人笔记。</p>
+              <p class="meta" data-copy="community.49">示例作者 · 示例评价：占位句子，不是用户留言。</p>
             </article>
             <article class="course-card" data-example data-kind="work" data-domain="other" data-search="作品 标志 其他 示例">
-              <p class="badge">示例作品</p>
-              <h3>山湖标志</h3>
+              <p class="badge" data-copy="community.50">示例作品</p>
+              <h3 data-copy="community.51">山湖标志</h3>
               <img src="assets/img/mark.svg" alt="" width="72" height="72">
-              <p>这张图用来说明作品可以放在社区里。它不是学员作业。</p>
-              <p class="meta">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+              <p data-copy="community.52">这张图用来说明作品可以放在社区里。它不是学员作业。</p>
+              <p class="meta" data-copy="community.53">示例作者 · 示例评价：占位句子，不是用户留言。</p>
             </article>
           </div>
         </section>
         <section class="section" id="studio" aria-labelledby="studio-title">
-          <h2 id="studio-title">在这台设备上整理</h2>
-          <p>三种模板的结构不一样。文字型顺着文章写，经验型顺着经历写，技术型先写结果、准备和步骤。保存之后可以再打开继续改。</p>
+          <h2 id="studio-title" data-copy="community.54">在这台设备上整理</h2>
+          <p data-copy="community.55">三种模板的结构不一样。文字型顺着文章写，经验型顺着经历写，技术型先写结果、准备和步骤。保存之后可以再打开继续改。</p>
           <p data-storage-note class="status-line" aria-live="polite"></p>
           <div class="template-grid">
-            <button class="template-card" type="button" data-pick-template="text" aria-pressed="false"><h3>文字型</h3><p>题旨、展开、例子、收束。</p></button>
-            <button class="template-card" type="button" data-pick-template="experience" aria-pressed="false"><h3>经验型</h3><p>背景、经过、收获、提醒。</p></button>
-            <button class="template-card" type="button" data-pick-template="technical" aria-pressed="false"><h3>技术型</h3><p>结果、准备、步骤、检查、易错处。</p></button>
+            <button class="template-card" type="button" data-pick-template="text" aria-pressed="false"><h3 data-copy="community.template.text">文字型</h3><p data-copy="community.template.text.blurb">题旨、展开、例子、收束。</p></button>
+            <button class="template-card" type="button" data-pick-template="experience" aria-pressed="false"><h3 data-copy="community.template.experience">经验型</h3><p data-copy="community.template.experience.blurb">背景、经过、收获、提醒。</p></button>
+            <button class="template-card" type="button" data-pick-template="technical" aria-pressed="false"><h3 data-copy="community.template.technical">技术型</h3><p data-copy="community.template.technical.blurb">结果、准备、步骤、检查、易错处。</p></button>
           </div>
           <form class="composer" data-draft-form>
-            <p>当前模板：<strong data-template-name>文字型</strong></p>
-            <label>标题
-              <input name="title" type="text" required maxlength="80" autocomplete="off">
+            <p><span data-copy="community.56">当前模板：</span><strong data-template-name data-copy="community.template.text">文字型</strong></p>
+            <label><span data-copy="community.57">标题
+              </span><input name="title" type="text" required maxlength="80" autocomplete="off">
             </label>
-            <label>领域
-              <select name="domain">
+            <label><span data-copy="community.58">领域
+              </span><select name="domain">
                 <option value="music">音乐</option>
                 <option value="fitness">运动健身</option>
                 <option value="travel">旅游</option>
@@ -138,41 +176,47 @@
                 <option value="other" selected>其他</option>
               </select>
             </label>
-            <label><span data-summary-label>想说清的一句话</span>
+            <label><span data-summary-label data-copy="community.template.text.summary">想说清的一句话</span>
               <textarea name="summary" rows="3"></textarea>
             </label>
-            <label data-materials-field hidden>开始前准备
-              <textarea name="materials" rows="3"></textarea>
+            <label data-materials-field hidden><span data-copy="community.59">开始前准备
+              </span><textarea name="materials" rows="3"></textarea>
             </label>
             <div data-chapters class="stack"></div>
             <div class="actions">
-              <button class="text-btn" type="button" data-add-chapter>加一节</button>
-              <button class="primary-btn" type="submit">保存到本机</button>
-              <button class="ghost-btn" type="button" data-preview>预览</button>
-              <button class="ghost-btn" type="button" data-local-preview>标为仅本机预览</button>
-              <button class="ghost-btn" type="button" data-print-current>打印 / 另存为 PDF</button>
+              <button class="text-btn" type="button" data-add-chapter data-copy="community.60">加一节</button>
+              <button class="primary-btn" type="submit" data-copy="community.61">保存到本机</button>
+              <button class="ghost-btn" type="button" data-preview data-copy="community.62">预览</button>
+              <button class="ghost-btn" type="button" data-local-preview data-copy="community.63">标为仅本机预览</button>
+              <button class="ghost-btn" type="button" data-print-current data-copy="community.64">打印 / 另存为 PDF</button>
             </div>
             <p data-draft-status class="status-line" role="status" aria-live="polite"></p>
-            <p data-publish-note class="empty-note" hidden>仅本机预览，待上线。没有发送给其他人，没有出现在上面的示例区，也没有增加积分。</p>
+            <p data-publish-note class="empty-note" hidden data-copy="community.65">仅本机预览，待上线。没有发送给其他人，没有出现在上面的示例区，也没有增加积分。</p>
           </form>
           <article data-draft-preview class="draft-preview" hidden></article>
-          <h3>本机草稿</h3>
-          <p class="status-line">只有这台浏览器看得到。刷新不会把它变成社区里的公开内容。</p>
+          <h3 data-copy="community.66">本机草稿</h3>
+          <p class="status-line" data-copy="community.67">只有这台浏览器看得到。刷新不会把它变成社区里的公开内容。</p>
           <ul class="draft-list" data-draft-list></ul>
-          <noscript><p class="empty-note">整理、保存和筛选需要脚本。示例卡片在不运行脚本时仍然可以阅读。</p></noscript>
+          <noscript><p class="empty-note" data-copy="community.68">整理、保存和筛选需要脚本。示例卡片在不运行脚本时仍然可以阅读。</p></noscript>
         </section>
       </div>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
-      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
-      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+      <p data-copy="site.footer">化山湖 · 技能学习空间。邀请登录和社区提交已经可以使用。学习笔记和本机草稿默认只留在这台设备上。示例课程的视频和外链还没有配置。</p>
+      <p class="device-note" data-copy="site.device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local data-copy="site.clear">清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
   <script src="assets/js/store.js"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
+  <script src="assets/js/auth-config.js"></script>
+  <script src="assets/js/authing.js"></script>
+  <script src="assets/js/cloudbase-config.js"></script>
+  <script src="assets/js/cloudbase-api.js"></script>
   <script src="assets/js/site.js"></script>
   <script src="assets/js/community.js"></script>
+  <script src="assets/js/publish.js"></script>
+  <script src="assets/js/copy.js"></script>
 </body>
 </html>

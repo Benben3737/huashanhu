@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <a class="skip" href="#content">跳到主要内容</a>
+  <a class="skip" href="#content" data-copy="site.skip">跳到主要内容</a>
   <div class="ink-field" aria-hidden="true">
     <svg class="ink-wash" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -28,66 +28,71 @@
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="化山湖，技能学习空间">
         <img src="assets/img/mark.svg" alt="" width="42" height="42">
-        <span><strong>化山湖</strong><small>技能学习空间</small></span>
+        <span><strong data-copy="site.brand">化山湖</strong><small data-copy="site.tagline">技能学习空间</small></span>
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><span data-menu-label>菜单</span></button>
-      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html">首页</a><a href="community.html">社区课程作品</a><a href="notes.html">学习笔记</a><a href="about.html">关于</a><a href="points.html" aria-current="page">积分</a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="主导航"><a href="index.html" data-copy="site.nav.home">首页</a><a href="community.html" data-copy="site.nav.community">社区课程作品</a><a href="notes.html" data-copy="site.nav.notes">学习笔记</a><a href="points.html" aria-current="page" data-copy="site.nav.points">积分</a><a href="about.html" data-copy="site.nav.about">关于</a></nav>
       <div class="header-actions">
-        <a class="text-btn" href="invite.html">邀请登录</a>
+        <a class="text-btn" href="invite.html" data-copy="site.nav.login">邀请登录</a>
       </div>
     </header>
-    <p class="proto-banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
-    <main id="content" class="shell">
+    <p class="proto-banner" data-copy="site.banner">标成「示例」的课程、作者和评价不是真实用户内容。你写下的内容只在这台浏览器里，默认不共享。</p>
+        <main id="content" class="shell">
       <header class="page-head">
-        <p class="kicker">积分</p>
-        <h1>积分规则还在待定。</h1>
-        <p class="lede">设想是：每发布一条专项课程内容记 1 分，用来约线下技能交流，或在平台兑换实物。笔记和作品不加这 1 分。这些规则还没有开始执行。</p>
+        <p class="kicker" data-copy="points.01">积分</p>
+        <h1 data-copy="points.02">积分规则还在待定。</h1>
+        <p class="lede" data-copy="points.03">设想是：每发布一条专项课程内容记 1 分，用来约线下技能交流，或在平台兑换实物。笔记和作品不加这 1 分。这些规则还没有开始执行。</p>
       </header>
       <section class="info-grid">
         <article class="quiet-card">
-          <h2>账户</h2>
+          <h2 data-copy="points.04">账户</h2>
           <dl class="fact-grid">
-            <div class="fact"><dt>登录状态</dt><dd>未登录</dd></div>
-            <div class="fact"><dt>新用户初始额度</dt><dd>待确定</dd></div>
-            <div class="fact"><dt>可用积分</dt><dd>待接通</dd></div>
+            <div class="fact"><dt data-copy="points.05">登录状态</dt><dd data-copy="points.06">未登录</dd></div>
+            <div class="fact"><dt data-copy="points.07">新用户初始额度</dt><dd data-copy="points.08">待确定</dd></div>
+            <div class="fact"><dt data-copy="points.09">可用积分</dt><dd data-server-points>待接通</dd></div>
           </dl>
-          <p>本页不读取浏览器里的草稿，刷新或点击也不会加分。真实发分需要服务器确认这是一次唯一的课程发布，并处理撤销和作弊。那些规则后续再定。</p>
+          <p data-copy="points.10">本页不读取浏览器里的草稿，刷新或点击也不会加分。真实发分需要服务器确认这是一次唯一的课程发布，并处理撤销和作弊。那些规则后续再定。</p>
         </article>
         <article class="quiet-card">
-          <h2>还不能做的事</h2>
-          <p>兑换比例、库存、线下预约流程和兑换规则都待确定。不能兑换现金，也不能把它理解成已经可以领取实物。</p>
+          <h2 data-copy="points.11">还不能做的事</h2>
+          <p data-copy="points.12">兑换比例、库存、线下预约流程和兑换规则都待确定。不能兑换现金，也不能把它理解成已经可以领取实物。</p>
           <div class="actions">
-            <button class="ghost-btn" type="button" data-points-action="offline">了解线下邀约</button>
-            <button class="ghost-btn" type="button" data-points-action="redeem">了解实物兑换</button>
+            <button class="ghost-btn" type="button" data-points-action="offline" data-copy="points.13">了解线下邀约</button>
+            <button class="ghost-btn" type="button" data-points-action="redeem" data-copy="points.14">了解实物兑换</button>
           </div>
           <p data-points-status class="status-line" role="status" aria-live="polite">当前不提交任何真实订单或消息。</p>
         </article>
       </section>
       <section class="section">
-        <h2>示例账本</h2>
-        <p>下表是说明用的例子，不是你的余额，也不是根据本机草稿算出来的。</p>
+        <h2 data-copy="points.15">示例账本</h2>
+        <p data-copy="points.16">下表是说明用的例子，不是你的余额，也不是根据本机草稿算出来的。</p>
         <div class="ledger-wrap">
           <table class="ledger">
-            <thead><tr><th>标记</th><th>事项</th><th>变动</th><th>说明</th></tr></thead>
+            <thead><tr><th data-copy="points.17">标记</th><th data-copy="points.18">事项</th><th data-copy="points.19">变动</th><th data-copy="points.20">说明</th></tr></thead>
             <tbody>
-              <tr><td>示例</td><td>示例：发布一条专项课程</td><td>+1</td><td>只说明设想中的计分。没有发放。</td></tr>
-              <tr><td>示例</td><td>示例：写一条学习笔记或一件作品</td><td>不加分</td><td>笔记和作品不按课程发布计 1 分。</td></tr>
-              <tr><td>示例</td><td>新用户初始额度</td><td>待确定</td><td>数值还没有由使用方确认。</td></tr>
+              <tr><td data-copy="points.21">示例</td><td data-copy="points.22">示例：发布一条专项课程</td><td data-copy="points.23">+1</td><td data-copy="points.24">只说明设想中的计分。没有发放。</td></tr>
+              <tr><td data-copy="points.25">示例</td><td data-copy="points.26">示例：写一条学习笔记或一件作品</td><td data-copy="points.27">不加分</td><td data-copy="points.28">笔记和作品不按课程发布计 1 分。</td></tr>
+              <tr><td data-copy="points.29">示例</td><td data-copy="points.30">新用户初始额度</td><td data-copy="points.31">待确定</td><td data-copy="points.32">数值还没有由使用方确认。</td></tr>
             </tbody>
           </table>
         </div>
       </section>
     </main>
     <footer class="site-footer">
-      <p>化山湖 · 技能学习空间。公开预览仍是静态页面。本机草稿默认私有，外链尚未配置。</p>
-      <p class="device-note">如果这是共用电脑，离开前请清除本机数据。</p>
-      <p><button class="text-btn" type="button" data-clear-local>清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
+      <p data-copy="site.footer">化山湖 · 技能学习空间。邀请登录和社区提交已经可以使用。学习笔记和本机草稿默认只留在这台设备上。示例课程的视频和外链还没有配置。</p>
+      <p class="device-note" data-copy="site.device-note">如果这是共用电脑，离开前请清除本机数据。</p>
+      <p><button class="text-btn" type="button" data-clear-local data-copy="site.clear">清除这台设备上的本机数据</button> <span data-clear-status aria-live="polite"></span></p>
     </footer>
   </div>
   <script src="assets/js/store.js"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
+  <script src="assets/js/auth-config.js"></script>
+  <script src="assets/js/authing.js"></script>
+  <script src="assets/js/cloudbase-config.js"></script>
+  <script src="assets/js/cloudbase-api.js"></script>
   <script src="assets/js/site.js"></script>
   <script src="assets/js/points.js"></script>
+  <script src="assets/js/copy.js"></script>
 </body>
 </html>

@@ -10,4 +10,20 @@
         : "当前不提交任何真实订单或消息。兑换比例、库存和线下预约流程都还待确定。";
     });
   });
+
+  const slot = document.querySelector("[data-server-points]");
+  if (!slot || !window.HuashanhuCloud) return;
+  if (!window.HuashanhuAuth.session()) {
+    slot.textContent = "未登录";
+    return;
+  }
+  if (!window.HuashanhuCloud.configured()) {
+    slot.textContent = "云函数未配置";
+    return;
+  }
+  window.HuashanhuCloud.listPoints().then((result) => {
+    slot.textContent = result.ok ? String(result.data.total) : "没有读到";
+  }).catch(() => {
+    slot.textContent = "没有连上";
+  });
 })();

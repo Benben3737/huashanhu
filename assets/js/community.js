@@ -114,8 +114,12 @@
     form.elements.domain.value = current.domain || "other";
     form.elements.summary.value = current.summary;
     form.elements.materials.value = current.materials || "";
-    templateName.textContent = spec.label;
-    summaryLabel.textContent = spec.summaryLabel;
+    const labelKey = "community.template." + current.template;
+    const summaryKey = labelKey + ".summary";
+    if (templateName) templateName.setAttribute("data-copy", labelKey);
+    if (summaryLabel) summaryLabel.setAttribute("data-copy", summaryKey);
+    templateName.textContent = window.HuashanhuCopy ? window.HuashanhuCopy.text(labelKey, spec.label) : spec.label;
+    summaryLabel.textContent = window.HuashanhuCopy ? window.HuashanhuCopy.text(summaryKey, spec.summaryLabel) : spec.summaryLabel;
     materialsField.hidden = !spec.materials;
     renderChapterEditors();
   }
@@ -347,6 +351,15 @@
 
   const initial = root.querySelector("[data-pick-template='text']");
   if (initial) initial.setAttribute("aria-pressed", "true");
+  document.addEventListener("huashanhu-copy", () => {
+    const spec = TEMPLATES[current.template];
+    if (!spec || !templateName || !summaryLabel) return;
+    const labelKey = "community.template." + current.template;
+    const summaryKey = labelKey + ".summary";
+    templateName.textContent = window.HuashanhuCopy.text(labelKey, spec.label);
+    summaryLabel.textContent = window.HuashanhuCopy.text(summaryKey, spec.summaryLabel);
+  });
+
   readStore();
   syncForm();
   renderList();

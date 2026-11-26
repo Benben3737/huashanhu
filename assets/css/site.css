@@ -391,8 +391,27 @@ textarea, select {
 @media (max-width: 860px) {
   .template-grid, .info-grid, .preview-technical .preview-chapter { grid-template-columns: 1fr; }
 }
+.copy-bar {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 28;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  max-width: min(420px, calc(100% - 32px));
+  padding: 10px 12px;
+  background: var(--bg-high);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.copy-bar .copy-mode { color: var(--lake); letter-spacing: 0.08em; }
+.copy-bar [data-copy-status] { color: var(--faint); font-size: 13px; }
+[data-copy].is-copy-editing { outline: 1px dashed var(--lake); outline-offset: 2px; }
 @media print {
-  .ink-field, .site-header, .proto-banner, .site-footer, .no-print, .menu-btn { display: none !important; }
+  .ink-field, .site-header, .proto-banner, .site-footer, .no-print, .menu-btn, .copy-bar { display: none !important; }
   body { background: #fff; color: #111; }
   .print-sheet, .print-sheet p, .print-sheet h1, .print-sheet h2, .print-sheet h3 { color: #111; background: #fff; box-shadow: none; }
   a { color: #111; }
