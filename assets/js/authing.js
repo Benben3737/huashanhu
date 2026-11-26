@@ -19,6 +19,12 @@
     return bytes;
   }
 
+  function siteRoot() {
+    const path = location.pathname;
+    if (path === "/huashanhu" || path.startsWith("/huashanhu/")) return location.origin + "/huashanhu/";
+    return location.origin + "/";
+  }
+
   function randomUrl(size) {
     const bytes = new Uint8Array(size);
     crypto.getRandomValues(bytes);
@@ -56,7 +62,7 @@
     sessionStorage.setItem(PKCE_KEY, JSON.stringify({ verifier: verifier, state: state, nonce: nonce }));
     const url = new URL(cfg.authorizationEndpoint);
     url.searchParams.set("client_id", cfg.clientId);
-    url.searchParams.set("redirect_uri", cfg.redirectUri);
+    url.searchParams.set("redirect_uri", siteRoot() + "auth-callback.html");
     url.searchParams.set("response_type", "code");
     url.searchParams.set("scope", "openid email profile");
     url.searchParams.set("state", state);
@@ -77,7 +83,7 @@
     sessionStorage.removeItem(PKCE_KEY);
     const url = new URL(cfg.endSessionEndpoint);
     url.searchParams.set("client_id", cfg.clientId);
-    url.searchParams.set("post_logout_redirect_uri", cfg.postLogoutRedirectUri);
+    url.searchParams.set("post_logout_redirect_uri", siteRoot());
     location.assign(url.toString());
   }
 
@@ -141,7 +147,7 @@
         body: new URLSearchParams({
           grant_type: "authorization_code",
           code: code,
-          redirect_uri: cfg.redirectUri,
+          redirect_uri: siteRoot() + "auth-callback.html",
           client_id: cfg.clientId,
           code_verifier: pending.verifier,
         }),
@@ -167,13 +173,15 @@
       aud: cfg.clientId,
       sub: payload.sub,
       email: payload.email || "",
+      name: payload.name || payload.nickname || "",
       email_verified: true,
       exp: payload.exp,
+      idToken: data.id_token,
     };
     sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
     return {
       ok: true,
-      message: "Authing 已确认这个邮箱。本次浏览器标签可以视为已登录。积分账本和课程公开发布没有接通，本机草稿也没有上传。",
+      message: "Authing 已确认这个邮箱。本次浏览器标签可以视为已登录。本机草稿没有上传。积分发放和课程正文要等 CloudBase 云函数接通后才写入服务器。",
     };
   }
 
