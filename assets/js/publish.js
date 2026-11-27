@@ -7,6 +7,8 @@
   const status = root.querySelector("[data-publish-status]");
   const list = root.querySelector("[data-live-courses]");
   const session = window.HuashanhuAuth && window.HuashanhuAuth.session();
+  const taxonomy = window.HuashanhuTaxonomy;
+  const domainBinder = taxonomy.bindDomainSelect(form.elements.domain, form.elements.sub);
 
   function say(text) {
     status.textContent = text;
@@ -39,10 +41,17 @@
       say("CloudBase 云函数地址还没填写。这次没有写入数据库。");
       return;
     }
+    const chosen = domainBinder.read();
+    const place = taxonomy.placement(chosen.domain, chosen.sub);
+    if (!place) {
+      say(chosen.domain ? "这个项目还要选一个子项目。没有写入。" : "先选择项目。没有写入。");
+      return;
+    }
     const course = {
       title: form.elements.title.value.trim(),
       kind: form.elements.kind.value,
-      domain: form.elements.domain.value,
+      domain: place.domain,
+      sub: place.sub,
       summary: form.elements.summary.value.trim(),
       template: "text",
       materials: "",
@@ -56,6 +65,7 @@
     const points = result.data.pointsAwarded ? "这门课程已记 1 分。" : "这条不是专项课程，没有加分。";
     say("已写入 CloudBase，编号 " + result.data.id + "。" + points + " 这不是公开人数或同步成功的夸张提示。");
     form.reset();
+    domainBinder.apply("");
     loadCatalog();
   });
 
@@ -84,7 +94,7 @@
           h("p", { class: "badge", text: course.kind === "course" ? "课程" : course.kind === "work" ? "作品" : "心得" }),
           h("h3", {}, link),
           h("p", { text: course.summary || "没有简介。" }),
-          h("p", { class: "meta", text: (course.authorName || "受邀成员") + " · 目录公开，正文需要邀请登录" }),
+          h("p", { class: "meta", text: [taxonomy.label(course.domain, course.sub), course.authorName || "受邀成员", "目录公开，正文需要邀请登录"].join(" · ") }),
         ),
       );
     });

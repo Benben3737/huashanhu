@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const cloudbase = require("@cloudbase/node-sdk");
+const taxonomy = require("./taxonomy");
 
 const ENV_ID = process.env.TCB_ENV || "huashanhu-d8gc6g7x681612ecd";
 const ISSUER = process.env.AUTH_ISSUER || "https://ejfpg9ktqybn-demo.authing.cn/oidc";
@@ -118,6 +119,7 @@ function publicCard(doc) {
     title: doc.title,
     summary: doc.summary,
     domain: doc.domain,
+    sub: typeof doc.sub === "string" ? doc.sub : "",
     kind: doc.kind,
     authorName: doc.authorName,
     createdAt: doc.createdAt,
@@ -158,24 +160,31 @@ function cleanCourse(input) {
   const kind = ["course", "insight", "work"].includes(input.kind) ? input.kind : "";
   const title = text(input.title, 80);
   const summary = text(input.summary, 500);
-  const domain = text(input.domain, 40) || "other";
+  const place = taxonomy.placement(text(input.domain, 40), text(input.sub, 40));
   const materials = text(input.materials, 500);
   const template = text(input.template, 40);
   if (!kind || !title) return null;
+  if (!place) return { error: "domain" };
   if (!Array.isArray(input.chapters) || input.chapters.length < 1 || input.chapters.length > 20) return null;
   const chapters = [];
   for (const chapter of input.chapters) {
     if (!chapter || typeof chapter.heading !== "string" || typeof chapter.body !== "string") return null;
     chapters.push({ heading: text(chapter.heading, 80), body: text(chapter.body, 8000) });
   }
-  return { kind, title, summary, domain, materials, template, chapters };
+  return { kind, title, summary, domain: place.domain, sub: place.sub, materials, template, chapters };
 }
 
 async function publishCourse(event) {
   const payload = await verifyIdToken(bearer(event));
   const who = actor(payload);
   const course = cleanCourse(event.body.course || {});
-  if (!course) return { ok: false, code: "bad_request", message: "课程内容不完整，没有写入。" };
+  if (!course || course.error === "domain") {
+    return {
+      ok: false,
+      code: "bad_request",
+      message: course && course.error === "domain" ? "项目或子项目不在目录里。没有写入。" : "课程内容不完整，没有写入。",
+    };
+  }
   const uid = who.authorUid;
   const authorName = text(payload.nickname || payload.name || "", 40) || (who.role === "founder" ? "化山湖创始人" : "受邀成员");
   const db = getApp().database();
@@ -184,6 +193,7 @@ async function publishCourse(event) {
     title: course.title,
     summary: course.summary,
     domain: course.domain,
+    sub: course.sub,
     kind: course.kind,
     authorName: authorName,
     authorUid: uid,

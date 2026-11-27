@@ -57,14 +57,36 @@
               <option value="work">作品</option>
             </select>
           </label>
-          <label><span data-copy="community.07">领域
-            </span><select name="domain">
-              <option value="music">音乐</option>
-              <option value="fitness">运动健身</option>
-              <option value="travel">旅游</option>
-              <option value="cooking">烹饪</option>
-              <option value="other" selected>其他</option>
+          <label><span data-copy="community.07">项目
+            </span><select name="domain" required>
+              <option value="" selected data-copy="community.tax.choose">选择项目</option>
+              <optgroup label="技术侧">
+                <option value="music" data-copy="community.tax.project.music">音乐</option>
+                <option value="art" data-copy="community.tax.project.art">美术</option>
+                <option value="body" data-copy="community.tax.project.body">身体修习</option>
+                <option value="mind" data-copy="community.tax.project.mind">心灵修习</option>
+                <option value="medicine" data-copy="community.tax.project.medicine">医</option>
+                <option value="esoteric" data-copy="community.tax.project.esoteric">玄术</option>
+              </optgroup>
+              <optgroup label="经验侧">
+                <option value="philosophy" data-copy="community.tax.project.philosophy">哲学</option>
+                <option value="travel" data-copy="community.tax.project.travel">旅行</option>
+                <option value="cooking" data-copy="community.tax.project.cooking">烹饪饮食</option>
+                <option value="digital" data-copy="community.tax.project.digital">数码技术</option>
+                <option value="media" data-copy="community.tax.project.media">影像传媒</option>
+                <option value="craft" data-copy="community.tax.project.craft">手工造物</option>
+                <option value="language" data-copy="community.tax.project.language">语言学习</option>
+                <option value="business" data-copy="community.tax.project.business">商务办公</option>
+                <option value="care" data-copy="community.tax.project.care">生活养护</option>
+                <option value="tradition" data-copy="community.tax.project.tradition">传统文化</option>
+                <option value="finance" data-copy="community.tax.project.finance">理财规划</option>
+                <option value="law" data-copy="community.tax.project.law">法务常识</option>
+                <option value="garden" data-copy="community.tax.project.garden">农林园艺</option>
+              </optgroup>
             </select>
+          </label>
+          <label data-sub-field hidden><span data-copy="community.tax.sublabel">子项目
+            </span><select name="sub" data-sub-select></select>
           </label>
           <label><span data-copy="community.08">简介
             </span><textarea name="summary" rows="3" maxlength="500"></textarea>
@@ -85,19 +107,12 @@
         <section aria-labelledby="discover-title">
           <h2 id="discover-title" data-copy="community.13">示例，供查看</h2>
           <p data-copy="community.14">作者、评价和这些条目都标成示例。页面不显示活跃人数，也不把示例说成真实动态。目录可以先看；打开其中一门课程或一节章节时，需要完成邀请登录。</p>
+          <p data-copy="community.tax.intro">目录分技术侧和经验侧。点项目名称进入这一项；有子项目时再点下一级。没有内容的条目打开后仍是空白。</p>
           <form class="filters" data-example-form action="community.html" method="get" role="search">
             <div class="search-row">
               <label><span data-copy="community.15">搜索示例
                 </span><input data-example-q id="q" name="q" type="search" placeholder="试试：游泳、钩手、备菜">
               </label>
-            </div>
-            <div class="chip-row" role="group" aria-label="领域">
-              <button class="chip" type="button" data-set-domain="" aria-pressed="true" data-copy="community.16">全部领域</button>
-              <button class="chip" type="button" data-set-domain="music" data-copy="community.17">音乐</button>
-              <button class="chip" type="button" data-set-domain="fitness" data-copy="community.18">运动健身</button>
-              <button class="chip" type="button" data-set-domain="travel" data-copy="community.19">旅游</button>
-              <button class="chip" type="button" data-set-domain="cooking" data-copy="community.20">烹饪</button>
-              <button class="chip" type="button" data-set-domain="other" data-copy="community.21">其他</button>
             </div>
             <div class="chip-row" role="group" aria-label="类型">
               <button class="chip" type="button" data-set-kind="" aria-pressed="true" data-copy="community.22">全部</button>
@@ -107,51 +122,190 @@
             </div>
             <p data-example-count aria-live="polite">正在显示示例。</p>
           </form>
-          <div class="card-grid" id="works">
-            <article class="course-card" data-example data-kind="course" data-domain="music" data-search="音乐 课程 四拍听记 示例">
-              <p class="badge" data-copy="community.26">示例课程</p>
-              <h3><a href="course-rhythm.html" data-copy="community.27">四拍听记页样例</a></h3>
-              <p data-copy="community.28">演示音乐页面如何放示意图。不是已开出的听写课。</p>
-              <p class="meta" data-copy="community.29">示例作者 · 示例评价：占位句子，不是用户留言。</p>
-            </article>
-            <article class="course-card" data-example data-kind="course" data-domain="fitness" data-search="运动健身 游泳 换气 课程 示例">
-              <p class="badge" data-copy="community.30">示例课程</p>
-              <h3><a href="course-swim.html" data-copy="community.31">换气页样例</a></h3>
-              <p data-copy="community.32">这门示例课还没有章节，用来表示尚未编写。</p>
-              <p class="meta" data-copy="community.33">示例作者 · 示例评价：占位句子，不是用户留言。</p>
-            </article>
-            <article class="course-card" data-example data-kind="course" data-domain="fitness" data-search="运动健身 螳螂拳 钩手 课程 示例">
-              <p class="badge" data-copy="community.34">示例课程</p>
-              <h3><a href="course-tanglang.html" data-copy="community.35">螳螂拳入门</a></h3>
-              <p data-copy="community.36">两节示例课文，不替代面授，也不提供训练计划。</p>
-              <p class="meta" data-copy="community.37">示例作者 · 示例评价：占位句子，不是用户留言。</p>
-            </article>
-            <article class="course-card" data-example data-kind="course" data-domain="travel" data-search="旅游 步行 课程 示例">
-              <p class="badge" data-copy="community.38">示例课程</p>
-              <h3><a href="course-walk.html" data-copy="community.39">半日步行页样例</a></h3>
-              <p data-copy="community.40">没有具体城市，避免编造行程。</p>
-              <p class="meta" data-copy="community.41">示例作者 · 示例评价：占位句子，不是用户留言。</p>
-            </article>
-            <article class="course-card" data-example data-kind="course" data-domain="cooking" data-search="烹饪 备菜 课程 示例">
-              <p class="badge" data-copy="community.42">示例课程</p>
-              <h3><a href="course-cook.html" data-copy="community.43">备菜顺序页样例</a></h3>
-              <p data-copy="community.44">只演示顺序栏，不是可以照做的配方。</p>
-              <p class="meta" data-copy="community.45">示例作者 · 示例评价：占位句子，不是用户留言。</p>
-            </article>
-            <article class="course-card" data-example data-kind="insight" data-domain="music" data-search="音乐 心得 节奏 示例">
-              <p class="badge" data-copy="community.46">示例心得</p>
-              <h3><a href="lesson-rhythm-01.html" data-copy="community.47">一小节格子如何被画出来</a></h3>
-              <p data-copy="community.48">示例心得，不是某位学习者的私人笔记。</p>
-              <p class="meta" data-copy="community.49">示例作者 · 示例评价：占位句子，不是用户留言。</p>
-            </article>
-            <article class="course-card" data-example data-kind="work" data-domain="other" data-search="作品 标志 其他 示例">
-              <p class="badge" data-copy="community.50">示例作品</p>
-              <h3 data-copy="community.51">山湖标志</h3>
-              <img src="assets/img/mark.svg" alt="" width="72" height="72">
-              <p data-copy="community.52">这张图用来说明作品可以放在社区里。它不是学员作业。</p>
-              <p class="meta" data-copy="community.53">示例作者 · 示例评价：占位句子，不是用户留言。</p>
-            </article>
-          </div>
+          <nav class="taxonomy" id="catalog" aria-label="项目目录">
+            <p class="tax-all"><a data-tax-link href="community.html#catalog" data-copy="community.tax.all">全部项目</a></p>
+            <section class="tax-side" data-tax-side="tech" id="side-tech">
+              <h3><a data-tax-link data-side="tech" href="community.html?side=tech#side-tech" data-copy="community.tax.side.tech">技术侧</a></h3>
+              <section class="project" data-tax-project="music" id="domain-music">
+                <h4><a data-tax-link data-domain="music" href="community.html?domain=music#domain-music" data-copy="community.tax.project.music">音乐</a></h4>
+                <div class="entry-body">
+                  <div class="card-grid">
+                    <article class="course-card" data-example data-kind="course" data-domain="music" data-search="音乐 课程 四拍听记 示例">
+                      <p class="badge" data-copy="community.26">示例课程</p>
+                      <p class="card-title"><a href="course-rhythm.html" data-copy="community.27">四拍听记页样例</a></p>
+                      <p data-copy="community.28">演示音乐页面如何放示意图。不是已开出的听写课。</p>
+                      <p class="meta" data-copy="community.29">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+                    </article>
+                    <article class="course-card" data-example data-kind="insight" data-domain="music" data-search="音乐 心得 节奏 示例">
+                      <p class="badge" data-copy="community.46">示例心得</p>
+                      <p class="card-title"><a href="lesson-rhythm-01.html" data-copy="community.47">一小节格子如何被画出来</a></p>
+                      <p data-copy="community.48">示例心得，不是某位学习者的私人笔记。</p>
+                      <p class="meta" data-copy="community.49">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+              <section class="project" data-tax-project="art" id="domain-art">
+                <h4><a data-tax-link data-domain="art" href="community.html?domain=art#domain-art" data-copy="community.tax.project.art">美术</a></h4>
+                <section class="subproject" data-tax-sub data-domain="art" data-sub="painting" id="sub-art-painting">
+                  <h5><a data-tax-link data-domain="art" data-sub="painting" href="community.html?domain=art&amp;sub=painting#sub-art-painting" data-copy="community.tax.sub.art.painting">绘画</a></h5>
+                  <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+                </section>
+                <section class="subproject" data-tax-sub data-domain="art" data-sub="design" id="sub-art-design">
+                  <h5><a data-tax-link data-domain="art" data-sub="design" href="community.html?domain=art&amp;sub=design#sub-art-design" data-copy="community.tax.sub.art.design">设计</a></h5>
+                  <div class="entry-body">
+                    <div class="card-grid">
+                      <article class="course-card" data-example data-kind="work" data-domain="art" data-sub="design" data-search="美术 设计 作品 标志 山湖 示例">
+                        <p class="badge" data-copy="community.50">示例作品</p>
+                        <p class="card-title" data-copy="community.51">山湖标志</p>
+                        <img src="assets/img/mark.svg" alt="" width="72" height="72">
+                        <p data-copy="community.52">这张图用来说明作品可以放在社区里。它不是学员作业。</p>
+                        <p class="meta" data-copy="community.53">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+                      </article>
+                    </div>
+                  </div>
+                </section>
+              </section>
+              <section class="project" data-tax-project="body" id="domain-body">
+                <h4><a data-tax-link data-domain="body" href="community.html?domain=body#domain-body" data-copy="community.tax.project.body">身体修习</a></h4>
+                <section class="subproject" data-tax-sub data-domain="body" data-sub="training" id="sub-body-training">
+                  <h5><a data-tax-link data-domain="body" data-sub="training" href="community.html?domain=body&amp;sub=training#sub-body-training" data-copy="community.tax.sub.body.training">运动健身训练</a></h5>
+                  <div class="entry-body">
+                    <div class="card-grid">
+                      <article class="course-card" data-example data-kind="course" data-domain="body" data-sub="training" data-search="身体修习 运动健身训练 游泳 换气 课程 示例">
+                        <p class="badge" data-copy="community.30">示例课程</p>
+                        <p class="card-title"><a href="course-swim.html" data-copy="community.31">换气页样例</a></p>
+                        <p data-copy="community.32">这门示例课还没有章节，用来表示尚未编写。</p>
+                        <p class="meta" data-copy="community.33">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+                      </article>
+                    </div>
+                  </div>
+                </section>
+                <section class="subproject" data-tax-sub data-domain="body" data-sub="rehab" id="sub-body-rehab">
+                  <h5><a data-tax-link data-domain="body" data-sub="rehab" href="community.html?domain=body&amp;sub=rehab#sub-body-rehab" data-copy="community.tax.sub.body.rehab">运动康复与体态矫正</a></h5>
+                  <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+                </section>
+                <section class="subproject" data-tax-sub data-domain="body" data-sub="martial" id="sub-body-martial">
+                  <h5><a data-tax-link data-domain="body" data-sub="martial" href="community.html?domain=body&amp;sub=martial#sub-body-martial" data-copy="community.tax.sub.body.martial">传统武道功法</a></h5>
+                  <div class="entry-body">
+                    <div class="card-grid">
+                      <article class="course-card" data-example data-kind="course" data-domain="body" data-sub="martial" data-search="身体修习 传统武道功法 螳螂拳 钩手 课程 示例">
+                        <p class="badge" data-copy="community.34">示例课程</p>
+                        <p class="card-title"><a href="course-tanglang.html" data-copy="community.35">螳螂拳入门</a></p>
+                        <p data-copy="community.36">两节示例课文，不替代面授，也不提供训练计划。</p>
+                        <p class="meta" data-copy="community.37">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+                      </article>
+                    </div>
+                  </div>
+                </section>
+                <section class="subproject" data-tax-sub data-domain="body" data-sub="combat" id="sub-body-combat">
+                  <h5><a data-tax-link data-domain="body" data-sub="combat" href="community.html?domain=body&amp;sub=combat#sub-body-combat" data-copy="community.tax.sub.body.combat">现代搏击格斗</a></h5>
+                  <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+                </section>
+              </section>
+              <section class="project" data-tax-project="mind" id="domain-mind">
+                <h4><a data-tax-link data-domain="mind" href="community.html?domain=mind#domain-mind" data-copy="community.tax.project.mind">心灵修习</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+              <section class="project" data-tax-project="medicine" id="domain-medicine">
+                <h4><a data-tax-link data-domain="medicine" href="community.html?domain=medicine#domain-medicine" data-copy="community.tax.project.medicine">医</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+              <section class="project" data-tax-project="esoteric" id="domain-esoteric">
+                <h4><a data-tax-link data-domain="esoteric" href="community.html?domain=esoteric#domain-esoteric" data-copy="community.tax.project.esoteric">玄术</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+            </section>
+            <section class="tax-side" data-tax-side="experience" id="side-experience">
+              <h3><a data-tax-link data-side="experience" href="community.html?side=experience#side-experience" data-copy="community.tax.side.experience">经验侧</a></h3>
+              <section class="project" data-tax-project="philosophy" id="domain-philosophy">
+                <h4><a data-tax-link data-domain="philosophy" href="community.html?domain=philosophy#domain-philosophy" data-copy="community.tax.project.philosophy">哲学</a></h4>
+                <section class="subproject" data-tax-sub data-domain="philosophy" data-sub="marxism" id="sub-philosophy-marxism">
+                  <h5><a data-tax-link data-domain="philosophy" data-sub="marxism" href="community.html?domain=philosophy&amp;sub=marxism#sub-philosophy-marxism" data-copy="community.tax.sub.philosophy.marxism">马哲等</a></h5>
+                  <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+                </section>
+                <section class="subproject" data-tax-sub data-domain="philosophy" data-sub="aesthetics" id="sub-philosophy-aesthetics">
+                  <h5><a data-tax-link data-domain="philosophy" data-sub="aesthetics" href="community.html?domain=philosophy&amp;sub=aesthetics#sub-philosophy-aesthetics" data-copy="community.tax.sub.philosophy.aesthetics">美学</a></h5>
+                  <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+                </section>
+              </section>
+              <section class="project" data-tax-project="travel" id="domain-travel">
+                <h4><a data-tax-link data-domain="travel" href="community.html?domain=travel#domain-travel" data-copy="community.tax.project.travel">旅行</a></h4>
+                <div class="entry-body">
+                  <div class="card-grid">
+                    <article class="course-card" data-example data-kind="course" data-domain="travel" data-search="旅行 旅游 步行 课程 示例">
+                      <p class="badge" data-copy="community.38">示例课程</p>
+                      <p class="card-title"><a href="course-walk.html" data-copy="community.39">半日步行页样例</a></p>
+                      <p data-copy="community.40">没有具体城市，避免编造行程。</p>
+                      <p class="meta" data-copy="community.41">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+              <section class="project" data-tax-project="cooking" id="domain-cooking">
+                <h4><a data-tax-link data-domain="cooking" href="community.html?domain=cooking#domain-cooking" data-copy="community.tax.project.cooking">烹饪饮食</a></h4>
+                <div class="entry-body">
+                  <div class="card-grid">
+                    <article class="course-card" data-example data-kind="course" data-domain="cooking" data-search="烹饪饮食 烹饪 备菜 课程 示例">
+                      <p class="badge" data-copy="community.42">示例课程</p>
+                      <p class="card-title"><a href="course-cook.html" data-copy="community.43">备菜顺序页样例</a></p>
+                      <p data-copy="community.44">只演示顺序栏，不是可以照做的配方。</p>
+                      <p class="meta" data-copy="community.45">示例作者 · 示例评价：占位句子，不是用户留言。</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+              <section class="project" data-tax-project="digital" id="domain-digital">
+                <h4><a data-tax-link data-domain="digital" href="community.html?domain=digital#domain-digital" data-copy="community.tax.project.digital">数码技术</a></h4>
+                <section class="subproject" data-tax-sub data-domain="digital" data-sub="programming" id="sub-digital-programming">
+                  <h5><a data-tax-link data-domain="digital" data-sub="programming" href="community.html?domain=digital&amp;sub=programming#sub-digital-programming" data-copy="community.tax.sub.digital.programming">程序开发</a></h5>
+                  <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+                </section>
+              </section>
+              <section class="project" data-tax-project="media" id="domain-media">
+                <h4><a data-tax-link data-domain="media" href="community.html?domain=media#domain-media" data-copy="community.tax.project.media">影像传媒</a></h4>
+                <section class="subproject" data-tax-sub data-domain="media" data-sub="equipment" id="sub-media-equipment">
+                  <h5><a data-tax-link data-domain="media" data-sub="equipment" href="community.html?domain=media&amp;sub=equipment#sub-media-equipment" data-copy="community.tax.sub.media.equipment">器械</a></h5>
+                  <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+                </section>
+              </section>
+              <section class="project" data-tax-project="craft" id="domain-craft">
+                <h4><a data-tax-link data-domain="craft" href="community.html?domain=craft#domain-craft" data-copy="community.tax.project.craft">手工造物</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+              <section class="project" data-tax-project="language" id="domain-language">
+                <h4><a data-tax-link data-domain="language" href="community.html?domain=language#domain-language" data-copy="community.tax.project.language">语言学习</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+              <section class="project" data-tax-project="business" id="domain-business">
+                <h4><a data-tax-link data-domain="business" href="community.html?domain=business#domain-business" data-copy="community.tax.project.business">商务办公</a></h4>
+                <section class="subproject" data-tax-sub data-domain="business" data-sub="social" id="sub-business-social">
+                  <h5><a data-tax-link data-domain="business" data-sub="social" href="community.html?domain=business&amp;sub=social#sub-business-social" data-copy="community.tax.sub.business.social">人情世故</a></h5>
+                  <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+                </section>
+              </section>
+              <section class="project" data-tax-project="care" id="domain-care">
+                <h4><a data-tax-link data-domain="care" href="community.html?domain=care#domain-care" data-copy="community.tax.project.care">生活养护</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+              <section class="project" data-tax-project="tradition" id="domain-tradition">
+                <h4><a data-tax-link data-domain="tradition" href="community.html?domain=tradition#domain-tradition" data-copy="community.tax.project.tradition">传统文化</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+              <section class="project" data-tax-project="finance" id="domain-finance">
+                <h4><a data-tax-link data-domain="finance" href="community.html?domain=finance#domain-finance" data-copy="community.tax.project.finance">理财规划</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+              <section class="project" data-tax-project="law" id="domain-law">
+                <h4><a data-tax-link data-domain="law" href="community.html?domain=law#domain-law" data-copy="community.tax.project.law">法务常识</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+              <section class="project" data-tax-project="garden" id="domain-garden">
+                <h4><a data-tax-link data-domain="garden" href="community.html?domain=garden#domain-garden" data-copy="community.tax.project.garden">农林园艺</a></h4>
+                <div class="entry-body"><p class="empty-note entry-empty" data-entry-empty data-copy="community.entry.empty" hidden>这里还没有内容。</p></div>
+              </section>
+            </section>
+          </nav>
         </section>
         <section class="section" id="studio" aria-labelledby="studio-title">
           <h2 id="studio-title" data-copy="community.54">在这台设备上整理</h2>
@@ -167,14 +321,36 @@
             <label><span data-copy="community.57">标题
               </span><input name="title" type="text" required maxlength="80" autocomplete="off">
             </label>
-            <label><span data-copy="community.58">领域
-              </span><select name="domain">
-                <option value="music">音乐</option>
-                <option value="fitness">运动健身</option>
-                <option value="travel">旅游</option>
-                <option value="cooking">烹饪</option>
-                <option value="other" selected>其他</option>
+            <label><span data-copy="community.58">项目
+              </span><select name="domain" required>
+                <option value="" selected data-copy="community.tax.choose">选择项目</option>
+                <optgroup label="技术侧">
+                  <option value="music" data-copy="community.tax.project.music">音乐</option>
+                  <option value="art" data-copy="community.tax.project.art">美术</option>
+                  <option value="body" data-copy="community.tax.project.body">身体修习</option>
+                  <option value="mind" data-copy="community.tax.project.mind">心灵修习</option>
+                  <option value="medicine" data-copy="community.tax.project.medicine">医</option>
+                  <option value="esoteric" data-copy="community.tax.project.esoteric">玄术</option>
+                </optgroup>
+                <optgroup label="经验侧">
+                  <option value="philosophy" data-copy="community.tax.project.philosophy">哲学</option>
+                  <option value="travel" data-copy="community.tax.project.travel">旅行</option>
+                  <option value="cooking" data-copy="community.tax.project.cooking">烹饪饮食</option>
+                  <option value="digital" data-copy="community.tax.project.digital">数码技术</option>
+                  <option value="media" data-copy="community.tax.project.media">影像传媒</option>
+                  <option value="craft" data-copy="community.tax.project.craft">手工造物</option>
+                  <option value="language" data-copy="community.tax.project.language">语言学习</option>
+                  <option value="business" data-copy="community.tax.project.business">商务办公</option>
+                  <option value="care" data-copy="community.tax.project.care">生活养护</option>
+                  <option value="tradition" data-copy="community.tax.project.tradition">传统文化</option>
+                  <option value="finance" data-copy="community.tax.project.finance">理财规划</option>
+                  <option value="law" data-copy="community.tax.project.law">法务常识</option>
+                  <option value="garden" data-copy="community.tax.project.garden">农林园艺</option>
+                </optgroup>
               </select>
+            </label>
+            <label data-sub-field hidden><span data-copy="community.tax.sublabel">子项目
+              </span><select name="sub" data-sub-select></select>
             </label>
             <label><span data-summary-label data-copy="community.template.text.summary">想说清的一句话</span>
               <textarea name="summary" rows="3"></textarea>
@@ -215,6 +391,7 @@
   <script src="assets/js/cloudbase-config.js"></script>
   <script src="assets/js/cloudbase-api.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/taxonomy.js"></script>
   <script src="assets/js/community.js"></script>
   <script src="assets/js/publish.js"></script>
   <script src="assets/js/copy.js"></script>
