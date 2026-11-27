@@ -14,8 +14,8 @@
   const button = document.querySelector("[data-print-button]");
   button?.addEventListener("click", () => window.print());
 
-  function domainLabel(value) {
-    return { music: "音乐", fitness: "运动健身", travel: "旅游", cooking: "烹饪", other: "其他" }[value] || "其他";
+  function domainLabel(domain, sub) {
+    return window.HuashanhuTaxonomy ? window.HuashanhuTaxonomy.label(domain, sub) : "未归入现有项目";
   }
 
   function missing(text) {
@@ -47,7 +47,7 @@
       sheet.append(
         h("p", { class: "badge", text: "本机草稿整理 · 非公开" }),
         h("h1", { text: item.title || "未命名草稿" }),
-        h("p", { text: domainLabel(item.domain) + " · " + (item.template || "") }),
+        h("p", { text: domainLabel(item.domain, item.sub) + " · " + (item.template || "") }),
         h("p", { class: "pre", text: item.summary || "" }),
       );
       if (item.materials) sheet.append(h("h2", { text: "开始前准备" }), h("p", { class: "pre", text: item.materials }));
@@ -65,7 +65,7 @@
       sheet.append(
         h("p", { class: "badge", text: "本机学习笔记 · 非公开" }),
         h("h1", { text: item.course || "未填写课程" }),
-        h("p", { text: "分享者：" + (item.sharer || "未填写") + " · 领域：" + domainLabel(item.domain) }),
+        h("p", { text: "分享者：" + (item.sharer || "未填写") + " · 项目：" + domainLabel(item.domain, item.sub) }),
         h("h2", { text: "学习进度" }),
         h("p", { class: "pre", text: item.progress || "未填写" }),
         h("h2", { text: "学习感悟" }),

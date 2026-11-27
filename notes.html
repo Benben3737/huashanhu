@@ -52,14 +52,36 @@
           <label><span data-copy="notes.05">哪一门课
             </span><input name="course" type="text" maxlength="80" autocomplete="off">
           </label>
-          <label><span data-copy="notes.06">领域
+          <label><span data-copy="notes.06">项目
             </span><select name="domain">
-              <option value="music">音乐</option>
-              <option value="fitness">运动健身</option>
-              <option value="travel">旅游</option>
-              <option value="cooking">烹饪</option>
-              <option value="other" selected>其他</option>
+              <option value="" selected data-copy="community.tax.choose">选择项目</option>
+              <optgroup label="技术侧">
+                <option value="music" data-copy="community.tax.project.music">音乐</option>
+                <option value="art" data-copy="community.tax.project.art">美术</option>
+                <option value="body" data-copy="community.tax.project.body">身体修习</option>
+                <option value="mind" data-copy="community.tax.project.mind">心灵修习</option>
+                <option value="medicine" data-copy="community.tax.project.medicine">医</option>
+                <option value="esoteric" data-copy="community.tax.project.esoteric">玄术</option>
+              </optgroup>
+              <optgroup label="经验侧">
+                <option value="philosophy" data-copy="community.tax.project.philosophy">哲学</option>
+                <option value="travel" data-copy="community.tax.project.travel">旅行</option>
+                <option value="cooking" data-copy="community.tax.project.cooking">烹饪饮食</option>
+                <option value="digital" data-copy="community.tax.project.digital">数码技术</option>
+                <option value="media" data-copy="community.tax.project.media">影像传媒</option>
+                <option value="craft" data-copy="community.tax.project.craft">手工造物</option>
+                <option value="language" data-copy="community.tax.project.language">语言学习</option>
+                <option value="business" data-copy="community.tax.project.business">商务办公</option>
+                <option value="care" data-copy="community.tax.project.care">生活养护</option>
+                <option value="tradition" data-copy="community.tax.project.tradition">传统文化</option>
+                <option value="finance" data-copy="community.tax.project.finance">理财规划</option>
+                <option value="law" data-copy="community.tax.project.law">法务常识</option>
+                <option value="garden" data-copy="community.tax.project.garden">农林园艺</option>
+              </optgroup>
             </select>
+          </label>
+          <label data-sub-field hidden><span data-copy="community.tax.sublabel">子项目
+            </span><select name="sub" data-sub-select></select>
           </label>
           <label><span data-copy="notes.07">学习进度（仅自己可见）
             </span><input name="progress" type="text" maxlength="120" autocomplete="off">
@@ -102,6 +124,7 @@
   <script src="assets/js/api.js"></script>
   <script src="assets/js/links.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/taxonomy.js"></script>
   <script src="assets/js/notes-app.js"></script>
   <script src="assets/js/auth-config.js"></script>
   <script src="assets/js/authing.js"></script>

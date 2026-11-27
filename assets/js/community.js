@@ -26,21 +26,7 @@
       chapters: ["操作步骤", "做完如何检查", "容易出错的地方"],
     },
   };
-  const DOMAINS = [
-    ["", "全部领域"],
-    ["music", "音乐"],
-    ["fitness", "运动健身"],
-    ["travel", "旅游"],
-    ["cooking", "烹饪"],
-    ["other", "其他"],
-  ];
-  const KINDS = [
-    ["", "全部"],
-    ["course", "课程"],
-    ["insight", "心得"],
-    ["work", "作品"],
-  ];
-
+  const taxonomy = window.HuashanhuTaxonomy;
   const form = root.querySelector("[data-draft-form]");
   const templateName = root.querySelector("[data-template-name]");
   const summaryLabel = root.querySelector("[data-summary-label]");
@@ -54,6 +40,7 @@
   let drafts = [];
   let storageBlocked = false;
   let current = blank("text");
+  let domainBinder = null;
 
   function blank(template) {
     const spec = TEMPLATES[template];
@@ -61,7 +48,8 @@
       id: "",
       template,
       title: "",
-      domain: "other",
+      domain: "",
+      sub: "",
       summary: "",
       materials: "",
       chapters: spec.chapters.map((heading) => ({ id: uid(), heading, body: "" })),
@@ -103,15 +91,15 @@
     return true;
   }
 
-  function domainLabel(value) {
-    const found = DOMAINS.find((item) => item[0] === value);
-    return found ? found[1] : "其他";
+  function domainLabel(domain, sub) {
+    return taxonomy.label(domain, sub);
   }
 
   function syncForm() {
     const spec = TEMPLATES[current.template];
     form.elements.title.value = current.title;
-    form.elements.domain.value = current.domain || "other";
+    const stored = taxonomy.selectStored(form.elements.domain, current.domain, current.sub);
+    domainBinder.apply(stored.legacy ? "" : stored.sub);
     form.elements.summary.value = current.summary;
     form.elements.materials.value = current.materials || "";
     const labelKey = "community.template." + current.template;
@@ -126,7 +114,9 @@
 
   function readForm() {
     current.title = form.elements.title.value.trim();
-    current.domain = form.elements.domain.value;
+    const chosen = domainBinder.read();
+    current.domain = chosen.domain;
+    current.sub = chosen.legacy ? current.sub || "" : chosen.sub;
     current.summary = form.elements.summary.value.trim();
     current.materials = TEMPLATES[current.template].materials ? form.elements.materials.value.trim() : "";
   }
@@ -169,7 +159,7 @@
     preview.replaceChildren(
       h("p", { class: "badge", text: "预览 · 仅本机 · " + spec.label }),
       h("h3", { text: current.title || "未命名草稿" }),
-      h("p", { class: "meta", text: domainLabel(current.domain) + " · 还没有公开" }),
+      h("p", { class: "meta", text: domainLabel(current.domain, current.sub) + " · 还没有公开" }),
       h("p", { text: current.summary || "还没有填写导语。" }),
     );
     if (spec.materials) {
@@ -223,7 +213,7 @@
             { class: "draft-card" },
             h("p", { class: "badge", text: spec.label + (draft.localPreview ? " · 仅本机预览 · 待上线" : " · 本机草稿") }),
             h("h3", { text: draft.title || "未命名草稿" }),
-            h("p", { class: "meta", text: domainLabel(draft.domain) + " · " + draft.chapters.length + " 节 · 其他人看不到 · 不加积分" }),
+            h("p", { class: "meta", text: domainLabel(draft.domain, draft.sub) + " · " + draft.chapters.length + " 节 · 其他人看不到 · 不加积分" }),
             h("div", { class: "actions" }, edit, print, remove),
           ),
         );
@@ -235,6 +225,12 @@
     if (!current.title) {
       say("先写一个标题，再保存到这台设备。");
       form.elements.title.focus();
+      return false;
+    }
+    const chosen = domainBinder.read();
+    if (!chosen.legacy && !taxonomy.placement(current.domain, current.sub)) {
+      say(current.domain ? "这个项目还要选一个子项目。" : "先选择项目，再保存到这台设备。");
+      (current.domain ? form.elements.sub : form.elements.domain).focus();
       return false;
     }
     if (!current.id) current.id = uid();
@@ -295,56 +291,198 @@
     window.location.href = "print.html?kind=draft&id=" + encodeURIComponent(current.id);
   });
 
-  function applyExamples() {
+  function readFilter() {
     const params = new URLSearchParams(location.search);
-    const domain = params.get("domain") || "";
-    const kind = params.get("kind") || "";
-    const q = (params.get("q") || "").trim().toLowerCase();
-    const query = root.querySelector("[data-example-q]");
-    if (query && document.activeElement !== query) query.value = params.get("q") || "";
-    root.querySelectorAll("[data-set-domain]").forEach((button) => {
-      button.setAttribute("aria-pressed", String((button.getAttribute("data-set-domain") || "") === domain));
+    return {
+      side: params.get("side") || "",
+      domain: params.get("domain") || "",
+      sub: params.get("sub") || "",
+      kind: params.get("kind") || "",
+      q: params.get("q") || "",
+    };
+  }
+
+  function writeFilter(next, hash) {
+    const params = new URLSearchParams();
+    ["side", "domain", "sub", "kind", "q"].forEach((key) => {
+      if (next[key]) params.set(key, next[key]);
     });
+    const qs = params.toString();
+    const nextHash = hash === undefined ? location.hash : hash;
+    history.pushState({}, "", location.pathname + (qs ? "?" + qs : "") + (nextHash || ""));
+    applyExamples();
+  }
+
+  function directExamples(section) {
+    const body = section.querySelector(":scope > .entry-body");
+    return body ? Array.from(body.querySelectorAll("[data-example]")) : [];
+  }
+
+  function entryOpened(domain, sub, note) {
+    if (!domain) return false;
+    const subHost = note.closest("[data-tax-sub]");
+    if (subHost) {
+      return subHost.getAttribute("data-domain") === domain && (!sub || subHost.getAttribute("data-sub") === sub);
+    }
+    const projectHost = note.closest("[data-tax-project]");
+    return Boolean(projectHost && projectHost.getAttribute("data-tax-project") === domain && !sub && !projectHost.querySelector("[data-tax-sub]"));
+  }
+
+  function applyExamples() {
+    const raw = readFilter();
+    let side = raw.side;
+    let domain = raw.domain;
+    let sub = raw.sub;
+    const kind = raw.kind;
+    const q = raw.q.trim().toLowerCase();
+    let note = "";
+    let jump = false;
+
+    if (!domain && side && !taxonomy.sides.some((item) => item.id === side)) {
+      note = "这个链接没有对应的一侧，下面仍是全部目录。";
+      side = "";
+    }
+
+    const mapped = taxonomy.alias(domain);
+    if (mapped) {
+      domain = mapped.domain;
+      sub = mapped.sub;
+      side = "";
+      const params = new URLSearchParams(location.search);
+      params.set("domain", domain);
+      if (sub) params.set("sub", sub);
+      else params.delete("sub");
+      params.delete("side");
+      const hash = sub ? "#sub-" + domain + "-" + sub : "#domain-" + domain;
+      history.replaceState({}, "", location.pathname + "?" + params.toString() + hash);
+      jump = true;
+    } else if (domain && !taxonomy.project(domain)) {
+      note = "这个链接没有对应的项目，下面仍是全部目录。";
+      domain = "";
+      sub = "";
+      side = "";
+    } else if (domain && sub && !taxonomy.childOf(domain, sub)) {
+      note = "这个子项目链接已经不在目录里，打开的是上一级项目。";
+      sub = "";
+    }
+
+    let filterSide = side;
+    if (domain) {
+      const owner = taxonomy.sideOf(domain);
+      filterSide = owner ? owner.id : "";
+    }
+    const narrowing = Boolean(kind || q);
+
+    const query = root.querySelector("[data-example-q]");
+    if (query && document.activeElement !== query) query.value = raw.q;
     root.querySelectorAll("[data-set-kind]").forEach((button) => {
       button.setAttribute("aria-pressed", String((button.getAttribute("data-set-kind") || "") === kind));
     });
-    let visible = 0;
+    root.querySelectorAll("[data-tax-link]").forEach((link) => {
+      const linkDomain = link.getAttribute("data-domain") || "";
+      const linkSub = link.getAttribute("data-sub") || "";
+      const linkSide = link.getAttribute("data-side") || "";
+      let current = false;
+      if (linkSub) current = domain === linkDomain && sub === linkSub;
+      else if (linkDomain) current = domain === linkDomain && !sub;
+      else if (linkSide) current = !domain && filterSide === linkSide;
+      else current = !domain && !filterSide;
+      link.setAttribute("aria-current", current ? "page" : "false");
+    });
+
     root.querySelectorAll("[data-example]").forEach((card) => {
       const hay = (card.getAttribute("data-search") || "").toLowerCase();
-      const show = (!domain || card.getAttribute("data-domain") === domain) && (!kind || card.getAttribute("data-kind") === kind) && (!q || hay.includes(q));
-      card.hidden = !show;
-      if (show) visible += 1;
+      card.hidden = Boolean((kind && card.getAttribute("data-kind") !== kind) || (q && !hay.includes(q)));
+    });
+
+    root.querySelectorAll("[data-tax-sub]").forEach((section) => {
+      const sectionDomain = section.getAttribute("data-domain");
+      const sectionSub = section.getAttribute("data-sub");
+      let show = !domain || sectionDomain === domain;
+      if (sub) show = sectionDomain === domain && sectionSub === sub;
+      const selected = domain === sectionDomain && sub === sectionSub;
+      if (show && narrowing && !selected && !directExamples(section).some((card) => !card.hidden)) show = false;
+      section.hidden = !show;
+    });
+
+    root.querySelectorAll("[data-tax-project]").forEach((section) => {
+      const sectionDomain = section.getAttribute("data-tax-project");
+      let show = !domain || sectionDomain === domain;
+      if (show && !domain && filterSide) show = taxonomy.sideOf(sectionDomain) && taxonomy.sideOf(sectionDomain).id === filterSide;
+      const selected = domain === sectionDomain;
+      if (show && narrowing && !selected) {
+        const own = directExamples(section).some((card) => !card.hidden);
+        const child = Array.from(section.querySelectorAll(":scope > [data-tax-sub]")).some((item) => !item.hidden);
+        if (!own && !child) show = false;
+      }
+      section.hidden = !show;
+    });
+
+    root.querySelectorAll("[data-tax-side]").forEach((section) => {
+      const id = section.getAttribute("data-tax-side");
+      let show = !filterSide || id === filterSide;
+      if (show && narrowing && !domain) {
+        show = Array.from(section.querySelectorAll("[data-tax-project]")).some((item) => !item.hidden);
+      }
+      section.hidden = !show;
+    });
+
+    root.querySelectorAll("[data-entry-empty]").forEach((empty) => {
+      empty.hidden = !entryOpened(domain, sub, empty);
+    });
+
+    let visible = 0;
+    root.querySelectorAll("[data-example]").forEach((card) => {
+      if (!card.hidden && !card.closest("[hidden]")) visible += 1;
+    });
+    const scopeHasExamples = Array.from(root.querySelectorAll("[data-example]")).some((card) => {
+      if (!domain) return true;
+      if ((card.getAttribute("data-domain") || "") !== domain) return false;
+      if (sub && (card.getAttribute("data-sub") || "") !== sub) return false;
+      return true;
     });
     const count = root.querySelector("[data-example-count]");
-    if (count) count.textContent = visible ? "当前显示 " + visible + " 条示例。它们不是真实用户刚刚发布的内容。" : "没有匹配的示例。";
-  }
-
-  function updateExampleUrl(next) {
-    const params = new URLSearchParams(location.search);
-    ["domain", "kind", "q"].forEach((key) => {
-      if (next[key]) params.set(key, next[key]);
-      else params.delete(key);
-    });
-    const qs = params.toString();
-    history.pushState({}, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
-    applyExamples();
+    if (count) {
+      const prefix = note ? note + " " : "";
+      if (!domain && note) count.textContent = note;
+      else if (visible) count.textContent = prefix + "当前显示 " + visible + " 条示例。它们不是真实用户刚刚发布的内容。";
+      else if (domain && !scopeHasExamples) count.textContent = note || "这里还没有内容。";
+      else if (kind || q) count.textContent = prefix + "没有匹配的示例。";
+      else if (domain) count.textContent = note || "这里还没有内容。";
+      else count.textContent = "当前显示 0 条示例。它们不是真实用户刚刚发布的内容。";
+    }
+    if (jump && location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) target.scrollIntoView({ block: "start" });
+    }
   }
 
   root.querySelector("[data-example-form]").addEventListener("submit", (event) => event.preventDefault());
   root.querySelector("[data-example-q]").addEventListener("input", (event) => {
-    const params = new URLSearchParams(location.search);
-    updateExampleUrl({ domain: params.get("domain") || "", kind: params.get("kind") || "", q: event.target.value.trim() });
+    const currentFilter = readFilter();
+    writeFilter(Object.assign({}, currentFilter, { q: event.target.value.trim() }));
   });
-  root.querySelectorAll("[data-set-domain]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const params = new URLSearchParams(location.search);
-      updateExampleUrl({ domain: button.getAttribute("data-set-domain") || "", kind: params.get("kind") || "", q: params.get("q") || "" });
+  root.querySelectorAll("[data-tax-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      event.preventDefault();
+      const url = new URL(link.href, location.href);
+      history.pushState({}, "", url.pathname + url.search + url.hash);
+      applyExamples();
+      const target = url.hash ? document.querySelector(url.hash) : document.getElementById("catalog");
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
   root.querySelectorAll("[data-set-kind]").forEach((button) => {
     button.addEventListener("click", () => {
-      const params = new URLSearchParams(location.search);
-      updateExampleUrl({ domain: params.get("domain") || "", kind: button.getAttribute("data-set-kind") || "", q: params.get("q") || "" });
+      const currentFilter = readFilter();
+      writeFilter({
+        side: currentFilter.side,
+        domain: currentFilter.domain,
+        sub: currentFilter.sub,
+        kind: button.getAttribute("data-set-kind") || "",
+        q: currentFilter.q,
+      });
     });
   });
   window.addEventListener("popstate", applyExamples);
@@ -358,13 +496,16 @@
     const summaryKey = labelKey + ".summary";
     templateName.textContent = window.HuashanhuCopy.text(labelKey, spec.label);
     summaryLabel.textContent = window.HuashanhuCopy.text(summaryKey, spec.summaryLabel);
+    renderList();
   });
 
+  domainBinder = taxonomy.bindDomainSelect(form.elements.domain, form.elements.sub);
   readStore();
   syncForm();
   renderList();
   applyExamples();
   if (location.hash === "#works") {
-    updateExampleUrl({ domain: "", kind: "work", q: "" });
+    history.replaceState({}, "", location.pathname + "?kind=work#catalog");
+    applyExamples();
   }
 })();

@@ -22,7 +22,7 @@
     root.append(
       h("p", { class: "badge", text: "来自 CloudBase" }),
       h("h1", { text: course.title || "未命名" }),
-      h("p", { class: "meta", text: (course.authorName || "受邀成员") + " · 只对已登录的受邀用户显示正文" }),
+      h("p", { class: "meta", text: [(window.HuashanhuTaxonomy ? window.HuashanhuTaxonomy.label(course.domain, course.sub) : ""), course.authorName || "受邀成员", "只对已登录的受邀用户显示正文"].filter(Boolean).join(" · ") }),
       h("p", { text: course.summary || "" }),
     );
     (course.chapters || []).forEach((chapter, index) => {

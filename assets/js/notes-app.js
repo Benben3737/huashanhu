@@ -8,9 +8,12 @@
   const list = root.querySelector("[data-note-list]");
   const reviews = root.querySelector("[data-review-list]");
   const storageNote = root.querySelector("[data-storage-note]");
+  const taxonomy = window.HuashanhuTaxonomy;
+  const domainBinder = taxonomy.bindDomainSelect(form.elements.domain, form.elements.sub);
   let notes = [];
   let storageBlocked = false;
   let currentId = "";
+  let keptSub = "";
   let timer = 0;
   let silence = false;
 
@@ -52,7 +55,8 @@
       id: currentId || uid(),
       sharer: form.elements.sharer.value.trim(),
       course: form.elements.course.value.trim(),
-      domain: form.elements.domain.value,
+      domain: domainBinder.read().domain,
+      sub: domainBinder.read().legacy ? keptSub : domainBinder.read().sub,
       progress: form.elements.progress.value.trim(),
       reflection: form.elements.reflection.value.trim(),
       feeling: form.elements.feeling.value.trim(),
@@ -65,16 +69,17 @@
     currentId = note.id;
     form.elements.sharer.value = note.sharer || "";
     form.elements.course.value = note.course || "";
-    form.elements.domain.value = note.domain || "other";
+    const stored = taxonomy.selectStored(form.elements.domain, note.domain, note.sub);
+    keptSub = stored.legacy ? note.sub || "" : stored.sub;
+    domainBinder.apply(stored.legacy ? "" : stored.sub);
     form.elements.progress.value = note.progress || "";
     form.elements.reflection.value = note.reflection || "";
     form.elements.feeling.value = note.feeling || "";
     form.elements.shareFeeling.checked = Boolean(note.shareFeeling);
   }
 
-  function domainLabel(value) {
-    const option = form.querySelector('option[value="' + value + '"]');
-    return option ? option.textContent : "其他";
+  function domainLabel(domain, sub) {
+    return taxonomy.label(domain, sub);
   }
 
   function render() {
@@ -103,6 +108,8 @@
             silence = true;
             currentId = "";
             form.reset();
+            keptSub = "";
+            domainBinder.apply("");
             form.elements.shareFeeling.checked = false;
             silence = false;
           }
@@ -117,7 +124,7 @@
             { class: "draft-card" },
             h("p", { class: "badge", text: "本机私有" }),
             h("h3", { text: note.course || "未填写课程" }),
-            h("p", { class: "meta", text: (note.sharer || "未填写分享者") + " · " + domainLabel(note.domain) }),
+            h("p", { class: "meta", text: (note.sharer || "未填写分享者") + " · " + domainLabel(note.domain, note.sub) }),
             h("p", { text: "进度和感悟不在这张卡片上展开。打开编辑才能看到全文。" }),
             h("div", { class: "actions" }, edit, print, remove),
           ),
